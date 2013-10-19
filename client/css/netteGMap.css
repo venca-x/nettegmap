@@ -1,12 +1,13 @@
 #nette-g-map
 {
     position: relative;
-    //border: 1px solid red;
+    text-align: center;
 }
 
-#nette-g-map-canvas
+#nette-g-map #nette-g-map-canvas
 {
-    //border: 1px solid green;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #nette-g-map #nette-g-map-search-box
