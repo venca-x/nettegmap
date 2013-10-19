@@ -97,15 +97,20 @@ class NetteGMapViewer extends Nette\Application\UI\Control {
      */
     private function codeDimension($dimension) {
 
-        if (is_int((int) $dimension)) {
+        preg_match('/(\d+)(px|%)?/i', $dimension, $matches);
+
+        $number = $matches[1];
+        $scale = @$matches[2];
+
+        if ($scale == "") {
             //integer, add px
-            return $dimension . "px";
-        } else if (is_int((int) substr($dimension, 0, -2)) && ( substr($dimension, -2) == "px" )) {
+            return $number . "px";
+        } else if ($scale == "px" ) {
             //is px
-            return $dimension;
-        } else if (is_int((int) substr($dimension, 0, -1)) && ( substr($dimension, -1) == "%" )) {
+            return $number."".$scale;
+        } else if ($scale == "%" ) {
             //is %
-            return $dimension;
+            return $number."".$scale;
         } else {
             throw new \Exception("Dimensions must be in number, px or %");
         }
