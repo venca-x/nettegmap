@@ -32,8 +32,6 @@ $(function() {
 
                 var places = searchBox.getPlaces();
 
-                console.log( place.geometry.location );
-
                 //clear all markers
                 for (var i = 0; i < markers.length; i++) {
                     markers[i].setMap(null);
