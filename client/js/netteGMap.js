@@ -78,8 +78,8 @@ $(function() {
             map.setCenter(location);
 
             //set position marker to inputs
-            $("input#latitude").val(markerPoint.position.lb);
-            $("input#longitude").val(markerPoint.position.mb);
+            $("input#latitude").val(markerPoint.position.ob);
+            $("input#longitude").val(markerPoint.position.pb);
 
             google.maps.event.addListener(markerPoint, 'dragend', function(point) {
                 $("input#latitude").val(point.latLng.lat().toFixed(10));
