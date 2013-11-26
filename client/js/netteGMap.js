@@ -2,6 +2,14 @@ $(function() {
 
     var infowindow = new google.maps.InfoWindow();
     
+    //pri zadavani vzhledavane fraze do naseptace v mape, neukladat cely form na klavesu enter
+    $("#nette-g-map-search-box").keydown(function (e) {
+        if (e.keyCode == 13) {
+            //stisknut ENTER, neodesilej formular
+            return false;
+        }
+    });
+
     //exist NetteGMapPicker?
     if ($('#nette-g-map').length === 1) {
 
