@@ -23,6 +23,11 @@ class NetteGMapPicker extends BaseControl {
      * @var int Y size map
      */
     private $sizeY = "400px";
+    
+    /**
+     * @var boolean ShowMyActualPositionButton 
+     */
+    private $showMyActualPositionButton = false;
 
     public static function register() {
         Container::extensionMethod('addGMap', function ( Container $form, $name, $label = null ) {
@@ -71,6 +76,11 @@ class NetteGMapPicker extends BaseControl {
 
         $container->add((string) $this->getTextboxControl("latitude"));
         $container->add((string) $this->getTextboxControl("longitude"));
+        
+        if( $this->showMyActualPositionButton )
+        {
+            $container->add( "<button type=\"button\" id=\"my-actual-position\">Načti moji polohu</button>" );
+        }
         return $container;
     }
 
@@ -111,6 +121,14 @@ class NetteGMapPicker extends BaseControl {
     public function setZoom($zoom) {
         $this->zoom = $zoom;
         return $this;
+    }
+    
+    /**
+     * Show button for my actual position
+     */
+    public function showMyActualPositionButton()
+    {
+        $this->showMyActualPositionButton = true;
     }
 
     /**

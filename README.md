@@ -51,6 +51,7 @@ protected function createComponentGMapForm() {
   $form->addGMap('position', 'Position:')
     ->setWidth("500")
     ->setHeight("500");
+	//->showMyActualPositionButton();
 
   $form->addSubmit('send', 'Save');
 

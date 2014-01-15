@@ -37,3 +37,11 @@
     right: 5px;
     bottom: 20px;
 }
+
+#nette-g-map button#my-actual-position
+{
+    position: absolute;
+    z-index: 999;
+    right: 5px;
+    bottom: 80px;
+}
