@@ -87,6 +87,16 @@ public function gMapFormSucceeded($form) {
 } 
         
 ```
+
+```php
+	$form->setDefaults(array(
+		'position' => array(
+			'latitude' => "49.1695254488",
+			'longitude' => "14.2521617334",
+		),
+	));
+```php
+
 ```html
   {control gMapForm}
 ```
