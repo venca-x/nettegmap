@@ -3,6 +3,26 @@ nettegmap
 
 Nette addon. Viewer and picker on gmap
 
+Installation
+------------
+
+ 1. Add the bundle to your dependencies:
+
+        // composer.json
+
+        {
+           // ...
+           "require": {
+               // ...
+               "venca-x/nettegmap": "dev-master"
+           }
+        }
+
+ 2. Use Composer to download and install the bundle:
+
+        composer update
+        
+
 
 Configuration
 -------------
