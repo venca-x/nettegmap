@@ -70,93 +70,93 @@ $( function() {
                 map.setCenter( new google.maps.LatLng( dataAttr.markers[0].latitude, dataAttr.markers[0].longitude ) );
             }
         }
-
-        function setMarkerPicker( location ) {
-            markerPoint = new google.maps.Marker( {
-                position: location,
-                map: map,
-                draggable: true
-            } );
-
-            map.setCenter( location );
-
-            //set position marker to inputs
-            $( "input#latitude" ).val( markerPoint.position.lat() );
-            $( "input#longitude" ).val( markerPoint.position.lng() );
-
-            google.maps.event.addListener( markerPoint, 'dragend', function( point ) {
-                $( "input#latitude" ).val( point.latLng.lat().toFixed( 10 ) );
-                $( "input#longitude" ).val( point.latLng.lng().toFixed( 10 ) );
-            } );
-
-            markers.push( markerPoint );
-        }
-
-
-        function setMarkerViewer( marker, i ) {
-
-            var location = new google.maps.LatLng( marker.latitude, marker.longitude );
-
-            //create marker
-            markerPoint = new google.maps.Marker( {
-                position: location,
-                map: map,
-                draggable: false,
-                title: marker.title
-            } );
-
-            //set icon whenn is set
-            if ( typeof marker.icon !== 'undefined' ) {
-                markerPoint.setIcon( marker.icon );
-            }
-
-            google.maps.event.addListener( markerPoint, 'click', ( function( markerPoint, i ) {
-                return function() {
-                    infowindow.setContent( marker.description );
-                    infowindow.open( map, markerPoint );
-                };
-            } )( markerPoint, i ) );
-
-            bounds.extend( location );
-
-            //add marker to array
-            markers.push( markerPoint );
-        }
-
-        /*
-         * Change location MarkerPicker
-         */
-        function changeMarkerPickerLocation( location )
-        {
-            markers[0].setPosition( location );
-            map.setCenter( location );
-
-            //set position marker to inputs
-            $( "input#latitude" ).val( markerPoint.position.lat() );
-            $( "input#longitude" ).val( markerPoint.position.lng() );
-
-            google.maps.event.addListener( markerPoint, 'dragend', function( point ) {
-                $( "input#latitude" ).val( point.latLng.lat().toFixed( 10 ) );
-                $( "input#longitude" ).val( point.latLng.lng().toFixed( 10 ) );
-            } );
-        }
-
-        function getMyLocationAndViewInMap()
-        {
-            if ( navigator.geolocation )
-            {
-                navigator.geolocation.getCurrentPosition( function( position ) {
-                    var myLatlng = new google.maps.LatLng( position.coords.latitude, position.coords.longitude );
-                    map.setZoom( 16 );
-                    changeMarkerPickerLocation( myLatlng );
-                } );
-            }
-            else
-            {
-                alert( "Váš prohlížeè nepodporuje geolokaèní služby. Aktualizujte prohlížeè na vyšší verzi" );
-            }
-        }
     }
+    
+    function setMarkerPicker( location ) {
+        markerPoint = new google.maps.Marker( {
+            position: location,
+            map: map,
+            draggable: true
+        } );
+
+        map.setCenter( location );
+
+        //set position marker to inputs
+        $( "input#latitude" ).val( markerPoint.position.lat() );
+        $( "input#longitude" ).val( markerPoint.position.lng() );
+
+        google.maps.event.addListener( markerPoint, 'dragend', function( point ) {
+            $( "input#latitude" ).val( point.latLng.lat().toFixed( 10 ) );
+            $( "input#longitude" ).val( point.latLng.lng().toFixed( 10 ) );
+        } );
+
+        markers.push( markerPoint );
+    }
+
+
+    function setMarkerViewer( marker, i ) {
+
+        var location = new google.maps.LatLng( marker.latitude, marker.longitude );
+
+        //create marker
+        markerPoint = new google.maps.Marker( {
+            position: location,
+            map: map,
+            draggable: false,
+            title: marker.title
+        } );
+
+        //set icon whenn is set
+        if ( typeof marker.icon !== 'undefined' ) {
+            markerPoint.setIcon( marker.icon );
+        }
+
+        google.maps.event.addListener( markerPoint, 'click', ( function( markerPoint, i ) {
+            return function() {
+                infowindow.setContent( marker.description );
+                infowindow.open( map, markerPoint );
+            };
+        } )( markerPoint, i ) );
+
+        bounds.extend( location );
+
+        //add marker to array
+        markers.push( markerPoint );
+    }
+
+    /*
+     * Change location MarkerPicker
+     */
+    function changeMarkerPickerLocation( location )
+    {
+        markers[0].setPosition( location );
+        map.setCenter( location );
+
+        //set position marker to inputs
+        $( "input#latitude" ).val( markerPoint.position.lat() );
+        $( "input#longitude" ).val( markerPoint.position.lng() );
+
+        google.maps.event.addListener( markerPoint, 'dragend', function( point ) {
+            $( "input#latitude" ).val( point.latLng.lat().toFixed( 10 ) );
+            $( "input#longitude" ).val( point.latLng.lng().toFixed( 10 ) );
+        } );
+    }
+
+    function getMyLocationAndViewInMap()
+    {
+        if ( navigator.geolocation )
+        {
+            navigator.geolocation.getCurrentPosition( function( position ) {
+                var myLatlng = new google.maps.LatLng( position.coords.latitude, position.coords.longitude );
+                map.setZoom( 16 );
+                changeMarkerPickerLocation( myLatlng );
+            } );
+        }
+        else
+        {
+            alert( "Váš prohlížeè nepodporuje geolokaèní služby. Aktualizujte prohlížeè na vyšší verzi" );
+        }
+    }    
 
     //load my GPS position and view in map
     $( "button#my-actual-position" ).click( function() {
