@@ -38,7 +38,29 @@ Nette\Forms\NetteGMapPicker::register();
   <link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/netteGMap.css">
   
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
-  <script type="text/javascript" src="{$basePath}/js/netteGMap.js"></script>
+  <script type="text/javascript" src="{$basePath}/js/jquery.netteGMap.js"></script>
+```
+
+main.js
+```html
+$( function() {
+
+	//netteGMap
+    $( 'body' ).netteGMap( { } );
+
+	//my callback marker change position
+    $( 'body' ).netteGMap( {        
+        
+        changePositionMarker: function( results ) {
+
+            var district = results[4].formatted_address.split(",");
+            alert( district[0] );
+            $("select#frm-editCompetitionForm-district_id option").each(function() { this.selected = ( this.text === district[0] ); });
+            //alert('changePositionMarker');
+        }
+        
+    } );
+} );
 ```
 
 Usage viewer
