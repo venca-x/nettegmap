@@ -18,6 +18,15 @@ $( document ).ready( function() {
                 // Override defaults with options
                 options = $.extend( defaults, options );
 
+
+				//pri zadavani vyhledavane fraze do naseptace v mape, neukladat cely form na klavesu enter
+				$( "#nette-g-map-search-box" ).keydown( function( e ) {
+					if ( e.keyCode == 13 ) {
+						//stisknut ENTER, neodesilej formular
+						return false;
+					}
+				} );				
+				
                 //get data atributes
                 var dataAttr = $( '#nette-g-map' ).data( "nette-g-map-picker" );
 
