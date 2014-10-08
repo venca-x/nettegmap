@@ -39,27 +39,25 @@ Nette\Forms\NetteGMapPicker::register();
   
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
   <script type="text/javascript" src="{$basePath}/js/jquery.netteGMap.js"></script>
+  <script type="text/javascript" src="{$basePath}/js/main.js"></script>
 ```
 
 main.js
 ```html
 $( function() {
-
-	//netteGMap
-    $( 'body' ).netteGMap( { } );
-
-	//my callback marker change position
-    $( 'body' ).netteGMap( {        
-        
+    $( 'body' ).netteGMap( {
+	
+        //my callback marker change position
         changePositionMarker: function( results ) {
 
             var district = results[4].formatted_address.split(",");
-            alert( district[0] );
+            //alert( district[0] );
+            $("select#frm-addCompetitionForm-district_id option").each(function() { this.selected = ( this.text === district[0] ); });
             $("select#frm-editCompetitionForm-district_id option").each(function() { this.selected = ( this.text === district[0] ); });
             //alert('changePositionMarker');
         }
         
-    } );
+    } );	
 } );
 ```
 
@@ -107,8 +105,7 @@ public function gMapFormSucceeded($form) {
   dump($values);
   exit();
 } 
-        
-```
+```php
 
 ```php
 	$form->setDefaults(array(
