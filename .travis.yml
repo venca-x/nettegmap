@@ -1,0 +1,30 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - hhvm
+  - hhvm-nightly
+
+env:
+  - TESTER_PHP_BIN="php-cgi"
+  - TESTER_PHP_BIN="hhvm"
+
+matrix:
+  allow_failures:
+    - php: hhvm
+    - php: hhvm-nightly
+
+before_script:
+  - mkdir -p temp/cache
+  - composer self-update
+
+install:
+  - composer install --no-interaction --prefer-source
+
+script:
+  - ./vendor/bin/tester -p $TESTER_PHP_BIN -c ./tests/php.ini -s ./tests/
+
+after_failure:
+  - for i in $(find ./tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done

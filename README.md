@@ -126,3 +126,23 @@ public function gMapFormSucceeded($form) {
       latitude => "50.0923932109" (13)
       longitude => "14.4580078125" (13)
 ```
+
+----------------------------------------------------------------------------------------------------
+
+Get coordinates from address
+-------------
+
+GMapUtils::
+
+
+Get address from coordinates
+-------------
+
+GMapUtils::
+
+Limits looking coordinates
+-------------
+
+Users of the free API:
+2,500 requests per 24 hour period.
+5 requests per second.

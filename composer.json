@@ -8,9 +8,12 @@
             "email": "venca-x@seznam.cz"
         }
     ],
-    "minimum-stability": "dev",
+    "require": {
+        "php": ">= 5.3.7",
+        "nette/nette": ">=2.2.0"
+    },
     "require-dev": {
-        "nette/tester": "@dev"
+        "nette/tester": "~1.0"
     },
     "autoload": {
         "classmap": ["src/"]
