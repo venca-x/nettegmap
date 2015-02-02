@@ -14,7 +14,7 @@ Installation
            // ...
            "require": {
                // ...
-               "venca-x/nettegmap": "dev-master"
+			   "venca-x/nettegmap": "1.0.0"
            }
         }
 
@@ -23,6 +23,8 @@ Installation
         composer update
         
 
+Or: 
+		composer require venca-x/nettegmap
 
 Configuration
 -------------
@@ -132,13 +134,21 @@ public function gMapFormSucceeded($form) {
 Get coordinates from address
 -------------
 
-GMapUtils::
+	\GMapUtils::getCoordinatesFromAddress("Prague, Czech Republic")
+	
+return 
+
+	array( "gps_lat" => 50.0755381, "gps_lon" => 14.4378005)
 
 
 Get address from coordinates
 -------------
 
-GMapUtils::
+	\GMapUtils::getAddressFromCoordinates( 50.0755381, 14.4378005 )
+	
+return
+
+	Náměstí Míru 820/9, 120 00 Praha-Praha 2, Czech Republic
 
 Limits looking coordinates
 -------------
