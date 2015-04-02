@@ -149,6 +149,10 @@ Get address from coordinates
 return
 
 	Náměstí Míru 820/9, 120 00 Praha-Praha 2, Czech Republic
+	
+Set marker position from out script
+-------------
+	$( "div#nette-g-map-canvas" ).setMarkerPosition( 1.1111, 2.2222 );
 
 Limits looking coordinates
 -------------
