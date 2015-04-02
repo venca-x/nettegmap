@@ -88,6 +88,11 @@ $( document ).ready( function() {
                 }                
             }
         };
+
+        $.fn.setMarkerPosition = function(lon, lat) {
+            var location = new google.maps.LatLng( lat, lon );
+            changeMarkerPickerLocation( location );
+        };
         
         function setMarkerPicker( location ) {
             markerPoint = new google.maps.Marker( {
