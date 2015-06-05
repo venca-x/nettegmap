@@ -6,25 +6,9 @@ Nette addon. Viewer and picker on gmap
 Installation
 ------------
 
- 1. Add the bundle to your dependencies:
+Install with composer:
 
-        // composer.json
-
-        {
-           // ...
-           "require": {
-               // ...
-			   "venca-x/nettegmap": "1.0.0"
-           }
-        }
-
- 2. Use Composer to download and install the bundle:
-
-        composer update
-        
-
-Or: 
-		composer require venca-x/nettegmap
+		composer require venca-x/nettegmap:~1.0
 
 Configuration
 -------------
@@ -62,6 +46,33 @@ $( function() {
     } );	
 } );
 ```
+
+Usage with Bower
+-------------
+
+        concat: {
+            js: {
+                src: ['bower_components/jquery/dist/jquery.min.js',
+					'vendor/nette/forms/src/assets/netteForms.js',
+                    'bower_components/bootstrap/dist/js/bootstrap.min.js',
+
+                    'vendor/venca-x/nettegmap/client/js/jquery.netteGMap.j',
+
+                    'www/js/main.js'
+                ],
+                dest: 'www/js/compiled.min.js'
+            }
+        },
+        cssmin: {
+            target: {
+                files: {
+                    'www/css/main.min.css': [
+                        'www/css/main.css',
+                        'vendor/venca-x/nettegmap/client/css/netteGMap.css' ]
+                }
+            }
+        }
+	
 
 Usage viewer
 -------------
