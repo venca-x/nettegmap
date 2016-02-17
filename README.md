@@ -8,7 +8,7 @@ Installation
 
 Install with composer:
 
-		composer require venca-x/nettegmap:~1.0
+		composer require venca-x/nettegmap:~1.0.2
 
 Configuration
 -------------
