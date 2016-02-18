@@ -14,21 +14,11 @@ use Nette\Utils\Html;
 class NetteGMapPicker extends BaseControl {
 
     /**
-     * Zoom of map (min: 0, max: )
-     * @var int Zoom of map 
+     * Class for "Extends"
+     * @var \BaseNetteGMap
      */
-    private $zoom = 12;
+    private $baseNetteGMap;
 
-    /**
-     * @var int X size map
-     */
-    private $sizeX = "500px";
-
-    /**
-     * @var int Y size map
-     */
-    private $sizeY = "400px";
-    
     /**
      * @var boolean ShowMyActualPositionButton 
      */
@@ -44,6 +34,7 @@ class NetteGMapPicker extends BaseControl {
 
     public function __construct($label = NULL) {
         parent::__construct($label);
+        $this->baseNetteGMap = new \BaseNetteGMap(array(), $this);
     }
 
     public function loadHttpData() {
@@ -57,19 +48,7 @@ class NetteGMapPicker extends BaseControl {
 
     public function getControl() {
         $container = Html::el('div', array("id" => "nette-g-map"));
-
-        $array = array(
-            'size' => array(
-                'x' => $this->sizeX,
-                'y' => $this->sizeY,
-            )
-        );
-
-        if ($this->zoom != NULL) {
-            $array['zoom'] = $this->zoom;
-        }
-
-        $container->data('nette-g-map-picker', json_encode($array));
+        $container->data('nette-g-map-picker', json_encode($this->getMapParams()));
 
         $searchBox = clone parent::getControl();
         $searchBox->type = "text";
@@ -79,13 +58,14 @@ class NetteGMapPicker extends BaseControl {
 
         $container->add(Html::el('div', array("id" => "nette-g-map-canvas")));
 
-        $container->add((string) $this->getTextboxControl("latitude"));
-        $container->add((string) $this->getTextboxControl("longitude"));
-        
         if( $this->showMyActualPositionButton )
         {
             $container->add( "<button type=\"button\" id=\"my-actual-position\">Načti moji polohu</button>" );
         }
+
+        $container->add((string) $this->getTextboxControl("latitude"));
+        $container->add((string) $this->getTextboxControl("longitude"));
+
         return $container;
     }
 
@@ -101,66 +81,22 @@ class NetteGMapPicker extends BaseControl {
 
     /*     * ************************************************************************ */
 
-    /**
-     * SetWidht map
-     * @param string|int $width int(px), int[px], int[%]
-     */
-    public function setWidth($width) {
-        $this->sizeX = $this->codeDimension($width);
-        return $this;
+    // fake "extends BaseNetteGMap" using magic function
+    public function __call($method, $args)
+    {
+        if(count($args) == 0) {
+            return $this->baseNetteGMap->$method(array());
+        } else {
+            return $this->baseNetteGMap->$method($args[0]);
+        }
     }
 
-    /**
-     * SetHeight map
-     * @param string|int $height int(px), int[px], int[%]
-     */
-    public function setHeight($height) {
-        $this->sizeY = $this->codeDimension($height);
-        return $this;
-    }
-
-    /**
-     * SetZoom map
-     * @param int
-     */
-    public function setZoom($zoom) {
-        $this->zoom = $zoom;
-        return $this;
-    }
-    
     /**
      * Show button for my actual position
      */
     public function showMyActualPositionButton()
     {
         $this->showMyActualPositionButton = true;
-    }
-
-    /**
-     * 
-     * @param type $dimension - Dimension for verification
-     * @return string - dimension
-     * @throws \Exception
-     */
-    private function codeDimension($dimension) {
-
-        preg_match('/(\d+)(px|%)?/i', $dimension, $matches);
-
-        $number = $matches[1];
-        $scale = @$matches[2];
-
-        if ($scale == "") {
-            //integer, add px
-            return $number . "px";
-        } else if ($scale == "px" ) {
-            //is px
-            return $number."".$scale;
-        } else if ($scale == "%" ) {
-            //is %
-            return $number."".$scale;
-        } else {
-            throw new \Exception("Dimensions must be in number, px or %");
-        }
     }
 
 }
