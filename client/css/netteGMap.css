@@ -22,31 +22,24 @@
     top: 3px; left: 0; right: 0;
 }
 
-#nette-g-map input#latitude
-{
+#nette-g-map input, #nette-g-map button {
     position: absolute;
     z-index: 999;
-    right: 5px;
-    bottom: 50px;
-    margin-right: 40px;
-    width: 100px;
-}
-
-#nette-g-map input#longitude
-{
-    position: absolute;
-    z-index: 999;
-    right: 5px;
-    bottom: 20px;
-    margin-right: 40px;
-    width: 100px;
+    width: 120px;
+    right: 45px;
 }
 
 #nette-g-map button#my-actual-position
 {
-    position: absolute;
-    z-index: 999;
-    right: 5px;
     bottom: 80px;
-    margin-right: 40px;
+}
+
+#nette-g-map input#latitude
+{
+    bottom: 50px;
+}
+
+#nette-g-map input#longitude
+{
+    bottom: 23px;
 }
