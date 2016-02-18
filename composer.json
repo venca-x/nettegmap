@@ -1,6 +1,6 @@
 {
     "name": "venca-x/nettegmap",
-    "description": "Nette addon. Viewer and picker google maps",
+    "description": "Nette addon. Viewer, picker and new layer for Google maps",
     "license": "MIT",
     "authors": [
         {
@@ -10,7 +10,9 @@
     ],
     "require": {
         "php": ">= 5.3.7",
-        "nette/nette": ">=2.2.0"
+        "nette/utils": ">=2.2.0",
+        "nette/bootstrap": ">=2.2.0",
+        "nette/robot-loader": ">=2.2.0"
     },
     "require-dev": {
         "nette/tester": "~1.0"

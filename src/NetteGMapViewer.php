@@ -3,6 +3,9 @@
 use Nette\Utils\Html;
 use Nette\Templating\Template;
 
+/**
+ * Class NetteGMapViewer
+ */
 class NetteGMapViewer extends Nette\Application\UI\Control {
 
     /**
