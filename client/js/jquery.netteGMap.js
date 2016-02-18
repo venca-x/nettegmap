@@ -2,6 +2,11 @@ $( document ).ready( function() {
 
     ( function( $ ) {
 
+
+        $("button#my-actual-position").click(function() {
+            showMyPosition();
+        });
+
         $.fn.netteGMap = function( options ) {
            
             //exist NetteGMap?
@@ -165,6 +170,19 @@ $( document ).ready( function() {
                     defaults.changePositionMarker( results );//call function to result data geocode
                 }
             });        
+        }
+
+        function showMyPosition() {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition(showPosition);
+            } else {
+                alert("Váš prohlížeč nepodporuje geolokaci");
+            }
+        }
+
+        function showPosition(position) {
+            var location = new google.maps.LatLng( position.coords.latitude, position.coords.longitude );
+            changeMarkerPickerLocation( location );
         }
 
     }( jQuery ) );

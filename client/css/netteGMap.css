@@ -28,6 +28,8 @@
     z-index: 999;
     right: 5px;
     bottom: 50px;
+    margin-right: 40px;
+    width: 100px;
 }
 
 #nette-g-map input#longitude
@@ -36,6 +38,8 @@
     z-index: 999;
     right: 5px;
     bottom: 20px;
+    margin-right: 40px;
+    width: 100px;
 }
 
 #nette-g-map button#my-actual-position
@@ -44,4 +48,5 @@
     z-index: 999;
     right: 5px;
     bottom: 80px;
+    margin-right: 40px;
 }

@@ -1,12 +1,12 @@
 <?php
 
 use Nette\Utils\Html;
-use Nette\Templating\Template;
+use Nette\Application\UI\Control;
 
 /**
  * Class NetteGMapViewer
  */
-class NetteGMapViewer extends Nette\Application\UI\Control {
+class NetteGMapViewer extends Control {
 
     /**
      * Zoom of map (min: 0, max: )
@@ -39,8 +39,6 @@ class NetteGMapViewer extends Nette\Application\UI\Control {
     }
 
     public function render() {
-        $container = Html::el('div', array("id" => "nette-g-map"));
-
         $array = array(
             'size' => array(
                 'x' => $this->sizeX,
@@ -54,12 +52,9 @@ class NetteGMapViewer extends Nette\Application\UI\Control {
             $array['zoom'] = $this->zoom;
         }
 
-        $container->data('nette-g-map-picker', json_encode($array));
-
-        $container->add(Html::el('div', array("id" => "nette-g-map-canvas")));
-
-        $template = new Template;
-        $template->setSource($container);
+        $template = $this->template;
+        $template->json = json_encode($array);
+        $template->setFile(__DIR__ . '/viewer.latte');
         $template->render();
     }
 
