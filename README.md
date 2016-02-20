@@ -88,12 +88,15 @@ Usage with Bower
 
 Usage viewer
 -------------
+This example show how to show map with marker:
 
 ```php
     protected function createComponentNetteGMapViewer() {
       $markers = array();
       $markers[] = new \Marker("home", "description", "49.1695254488", "14.2521617334");
       
+      //$netteGMapViewer->setCenterMap(new \GpsPoint(49.1695254488,14.2521617334));
+      //$netteGMapViewer->setScrollwheel(TRUE);
       $netteGMapViewer = new \NetteGMapViewer($markers);
       $netteGMapViewer->setZoom(12);
       
@@ -107,6 +110,8 @@ Usage viewer
 
 Usage picker
 -------------
+This example show how to add in form picker for set GPS position:
+
 
 ```php
     protected function createComponentGMapForm() {
@@ -117,6 +122,8 @@ Usage picker
             ->setWidth("500")
             ->setHeight("500");
             //->showMyActualPositionButton();
+            //$netteGMapViewer->setCenterMap(new \GpsPoint(49.1695254488,14.2521617334));
+            //$netteGMapViewer->setScrollwheel(TRUE);
         
         $form->addSubmit('send', 'Save');
         
@@ -132,7 +139,7 @@ Usage picker
     } 
 ```
 
-
+Default position picker:
 ```php
     $form->setDefaults(array(
         'position' => array(
@@ -142,18 +149,42 @@ Usage picker
     ));
 ```
 
-
+Latte:
 ```html
     {control gMapForm}
 ```
 
-
+After send form:
 ```html
     Nette\ArrayHash #f110
         position => array (2)
             latitude => "50.0923932109" (13)
             longitude => "14.4580078125" (13)
 ```
+
+Usage layer
+-------------
+This example show how to add own picture on map:
+
+    protected function createComponentNetteGMapLayer() {
+        $netteGMapViewer = new \NetteGMapLayer();
+        //$netteGMapViewer->setCenterMap(new \GpsPoint("48.977153", "14.454486"));
+        $netteGMapViewer->setHeight("600px");
+        $netteGMapViewer->setScrollwheel(TRUE);
+        $netteGMapViewer->setZoom(18);
+
+        $netteGMapViewer->setLayerUrlImage("http://www.barcampjc.cz/pictures/parkoviste.jpg");
+
+        $netteGMapViewer->setLayerLeftDownCorner(new \GpsPoint(48.97685376928403, 14.453693823169715));
+        $netteGMapViewer->setLayerRightTopCorner(new \GpsPoint(48.97771464665134, 14.45583921230309));
+
+        return $netteGMapViewer;
+    }
+
+Latte:
+
+    {control netteGMapLayer}
+    
 
 ----------------------------------------------------------------------------------------------------
 
