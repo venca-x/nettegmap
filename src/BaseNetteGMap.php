@@ -1,7 +1,5 @@
 <?php
 
-use Nette\Templating\Template;
-
 /**
  * Class AbstractNetteGMap
  * Base abstract map class for propertis in map
@@ -27,6 +25,17 @@ class BaseNetteGMap extends Nette\Application\UI\Control {
     private $sizeY = "400px";
 
     /**
+     * @var GpsPoint
+     * Center of map
+     */
+    private $centerMapGpsPoint = NULL;
+
+    /**
+     * @var bool Zoom map with scroll wheal in mouse
+     */
+    private $scrollwheel = FALSE;
+
+    /**
      * @var array $markers
      */
     private $markers;
@@ -41,28 +50,47 @@ class BaseNetteGMap extends Nette\Application\UI\Control {
         }
     }
 
-
     public function getMapParams() {
-        $array = array(
+        $array = array();
+
+        $array['map'] = array(
             'size' => array(
                 'x' => $this->sizeX,
                 'y' => $this->sizeY,
-            )
+            ),
+            'scrollwheel' => $this->scrollwheel
         );
+
+        if($this->centerMapGpsPoint != NULL) {
+            $array['map']['center'] = array(
+                'lat' => $this->centerMapGpsPoint->getLongitude(),
+                'lng' => $this->centerMapGpsPoint->getLatitude(),
+            );
+        }
+
+        if( $this->zoom != NULL )
+        {
+            $array['map']['zoom'] = $this->zoom;
+        }
+
 
         if(count($this->markers) > 0) {
             $array['markers'] = $this->markers;
         }
-        
-        if( $this->zoom != NULL )
-        {
-            $array['zoom'] = $this->zoom;
-        }
+
 
         return $array;
     }
 
     /*     * ************************************************************************ */
+
+    /**
+     * @param GpsPoint $centerMap
+     * Set hard center of map, if is null is set automatic from markers
+     */
+    public function setCenterMap(GpsPoint $centerMap) {
+        $this->centerMapGpsPoint = $centerMap;
+    }
 
     /**
      * SetWidht map
@@ -88,6 +116,23 @@ class BaseNetteGMap extends Nette\Application\UI\Control {
      */
     public function setZoom($zoom) {
         $this->zoom = $zoom;
+        return $this->child;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isScrollwheel()
+    {
+        return $this->scrollwheel;
+    }
+
+    /**
+     * @param boolean $scrollwheel
+     */
+    public function setScrollwheel($scrollwheel)
+    {
+        $this->scrollwheel = (boolean) $scrollwheel;
         return $this->child;
     }
 

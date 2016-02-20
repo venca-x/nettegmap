@@ -1,2 +1,2 @@
 @ECHO OFF
-../vendor/bin/tester.bat -c ../tests/php.ini ../tests
+../vendor/bin/tester ../tests -s -p php -c ../tests/php.ini

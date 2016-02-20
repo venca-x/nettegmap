@@ -1,7 +1,6 @@
 #nette-g-map
 {
     position: relative;
-    text-align: center;
 }
 
 #nette-g-map #nette-g-map-canvas
@@ -14,7 +13,7 @@
 {
     position: absolute;
     z-index: 999;
-    border: 2px solid gainsboro;    
+    border: 2px solid gainsboro;
     width: 50%;
     overflow: auto;
     margin: auto;

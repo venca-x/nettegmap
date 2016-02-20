@@ -8,11 +8,8 @@ class Marker extends Nette\Object {
     /** @var string */
     protected $description;
 
-    /** @var double */
-    protected $latitude;
-
-    /** @var double */
-    protected $longitude;
+    /** @var GpsPoint */
+    protected $gpsPoint;
 
     /** @var url */
     protected $icon;
@@ -20,8 +17,7 @@ class Marker extends Nette\Object {
     public function __construct($title, $description, $latitude, $longitude, $icon = null) {
         $this->setTitle($title);
         $this->setDescription($description);
-        $this->setLatitude($latitude);
-        $this->setLongitude($longitude);
+        $this->gpsPoint = new GpsPoint($latitude, $longitude);
         $this->setIcon($icon);
     }
 
@@ -54,23 +50,19 @@ class Marker extends Nette\Object {
     }
 
     public function setLatitude($latitude) {
-        $this->latitude = $this->setDimension($latitude);
+        $this->gpsPoint->setLatitude($latitude);
     }
 
     public function setLongitude($longitude) {
-        $this->longitude = $this->setDimension($longitude);
+        $this->gpsPoint->setLongitude($longitude);
     }
 
     public function setIcon($icon) {
         $this->icon = $icon;
     }
 
-    private function setDimension($dimension) {
-        return str_replace(",", ".", $dimension);
-    }
-
     public function getArray() {
-        $array = array("title" => $this->title, "description" => $this->description, "latitude" => $this->latitude, "longitude" => $this->longitude);
+        $array = array("title" => $this->title, "description" => $this->description, "latitude" => $this->gpsPoint->getLatitude(), "longitude" => $this->gpsPoint->getLongitude());
         if($this->icon != null )
         {
             $array["icon"] = $this->icon;
