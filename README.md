@@ -19,7 +19,7 @@ bootstrap.php
 
 ```php
 
-    Nette\Forms\NetteGMapPicker::register();
+    Nette\Forms\NetteGMapPicker::register();//require only form picker
 
 ```
 
@@ -30,13 +30,6 @@ bootstrap.php
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
     <script type="text/javascript" src="{$basePath}/js/jquery.netteGMap.js"></script>
     <script type="text/javascript" src="{$basePath}/js/main.js"></script>
-```
-## Minimal content main.js
-main.js
-```html
-    $( function() {
-        $( 'body' ).netteGMap();	
-    } );
 ```
 
 ## Callback after change position marker in main.js
