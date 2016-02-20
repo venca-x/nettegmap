@@ -21,7 +21,7 @@ $(document).ready(function () {
                 mapProp.zoom = dataMapAttr.map.zoom;
             }
 
-            var mapCanvasDiv = thisMap.find("div.nette-g-map-canvas");
+            var mapCanvasDiv = thisMap.find("div.nettegmap-canvas");
 
             //set dimensions of map
             mapCanvasDiv.width(dataMapAttr.map.size.x);
@@ -106,8 +106,7 @@ $(document).ready(function () {
                 options = $.extend(defaults, options);
 
                 //in search is key ENTER none function
-                $("#nette-g-map-search-box").keydown(function (e) {
-                    //@TODO predelat na this
+                this.find("#nettegmap-search-box").keydown(function (e) {
                     if (e.keyCode == 13) {
                         //stisknut ENTER, neodesilej formular
                         return false;
@@ -115,7 +114,7 @@ $(document).ready(function () {
                 });
 
                 //search
-                var searchBox = new google.maps.places.SearchBox($("#nette-g-map-search-box")[0]);
+                var searchBox = new google.maps.places.SearchBox(this.find("#nettegmap-search-box")[0]);
 
                 //search result
                 google.maps.event.addListener(searchBox, 'places_changed', function () {

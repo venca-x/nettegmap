@@ -47,16 +47,16 @@ class NetteGMapPicker extends BaseControl {
     }
 
     public function getControl() {
-        $container = Html::el('div', array("id" => "nette-g-map", "class" => "nettegmap-picker"));
+        $container = Html::el('div', array("id" => "nettegmap", "class" => "nettegmap-picker"));
         $container->data('map-attr', json_encode($this->getMapParams()));
 
         $searchBox = clone parent::getControl();
         $searchBox->type = "text";
-        $searchBox->id = "nette-g-map-search-box";
+        $searchBox->id = "nettegmap-search-box";
         $searchBox->placeholder = "Vyhledávání";
         $container->add($searchBox);
 
-        $container->add(Html::el('div', array("class" => "nette-g-map-canvas")));
+        $container->add(Html::el('div', array("class" => "nettegmap-canvas")));
 
         if( $this->showMyActualPositionButton )
         {

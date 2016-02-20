@@ -1,15 +1,15 @@
-#nette-g-map
+#nettegmap
 {
     position: relative;
 }
 
-#nette-g-map #nette-g-map-canvas
+#nettegmap .nettegmap-canvas
 {
     margin-left: auto;
     margin-right: auto;
 }
 
-#nette-g-map #nette-g-map-search-box
+#nettegmap #nettegmap-search-box
 {
     position: absolute;
     z-index: 999;
@@ -21,24 +21,24 @@
     top: 3px; left: 0; right: 0;
 }
 
-#nette-g-map input, #nette-g-map button {
+#nettegmap input, #nettegmap button {
     position: absolute;
     z-index: 999;
     width: 120px;
     right: 45px;
 }
 
-#nette-g-map button#my-actual-position
+#nettegmap button#my-actual-position
 {
     bottom: 80px;
 }
 
-#nette-g-map input#latitude
+#nettegmap input#latitude
 {
     bottom: 50px;
 }
 
-#nette-g-map input#longitude
+#nettegmap input#longitude
 {
     bottom: 23px;
 }

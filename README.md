@@ -175,7 +175,7 @@ return
 	
 Set marker position from out script
 -------------
-	$( "div#nette-g-map-canvas" ).setMarkerPosition( 1.1111, 2.2222 );
+	$( "#my-div-map div.nettegmap-canvas" ).setMarkerPosition( 14.1111, 48.2222 );
 
 Limits looking coordinates
 -------------
