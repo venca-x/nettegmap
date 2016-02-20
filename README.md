@@ -130,7 +130,8 @@ Usage picker
         dump($values);
         exit();
     } 
-```php
+```
+
 
 ```php
     $form->setDefaults(array(
@@ -139,11 +140,13 @@ Usage picker
             'longitude' => "14.2521617334",
         ),
     ));
-```php
+```
+
 
 ```html
     {control gMapForm}
 ```
+
 
 ```html
     Nette\ArrayHash #f110
