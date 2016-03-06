@@ -46,6 +46,26 @@ $(document).ready(function () {
                     addMarkerToMap(bounds, dataMapAttr.markers[i], i);
                 }
 
+                //view polyline
+                console.dir( dataMapAttr.polyline );
+                if (dataMapAttr.hasOwnProperty('polyline') && dataMapAttr.polyline.hasOwnProperty('coordinates')) {
+
+                    var coordinatesArray = [];
+
+                    for (i = 0; i < dataMapAttr.polyline.coordinates.length; i++) {
+                        coordinatesArray.push({lat: dataMapAttr.polyline.coordinates[i].latitude, lng: dataMapAttr.polyline.coordinates[i].longitude});
+                    }
+
+                    var flightPath = new google.maps.Polyline({
+                        path: coordinatesArray,
+                        geodesic: true,
+                        strokeColor: dataMapAttr.polyline.stroke.color,
+                        strokeOpacity: dataMapAttr.polyline.stroke.opacity,
+                        strokeWeight: dataMapAttr.polyline.stroke.weight
+                    });
+                    flightPath.setMap(map);
+                }
+
                 if (typeof dataMapAttr.map.center !== 'undefined') {
                     //is set center
                     mapProp.center = new google.maps.LatLng(dataMapAttr.map.center.lng, dataMapAttr.map.center.lat);

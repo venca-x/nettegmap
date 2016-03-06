@@ -40,6 +40,11 @@ class BaseNetteGMap extends Nette\Application\UI\Control {
      */
     private $markers;
 
+    /**
+     * @var PolyLine $polyLine
+     */
+    private $polyLine = NULL;
+
     public function __construct($markers, $child) {
         $this->markers = $markers;
         $this->child = $child;
@@ -78,8 +83,19 @@ class BaseNetteGMap extends Nette\Application\UI\Control {
             $array['markers'] = $this->markers;
         }
 
+        if($this->polyLine != NULL) {
+            $array['polyline'] = $this->polyLine->getArray();
+        }
 
         return $array;
+    }
+
+    /**
+     * Add Poly line to map
+     * @param PolyLine $polyLine
+     */
+    public function setPolyLine(PolyLine $polyLine) {
+        $this->polyLine = $polyLine;
     }
 
     /*     * ************************************************************************ */

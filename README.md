@@ -93,6 +93,17 @@ This example show how to show map with marker:
       $netteGMapViewer = new \NetteGMapViewer($markers);
       $netteGMapViewer->setZoom(12);
       
+
+      //add polyline to map
+      $coordinates = array(
+          new \GpsPoint(49.169669, 14.252152),
+          new \GpsPoint(49.169399, 14.252175),
+          new \GpsPoint(49.169532, 14.251842),
+          new \GpsPoint(49.169669, 14.252152)
+      );
+      $polyLine = new \PolyLine($coordinates);
+      $netteGMapViewer->setPolyLine($polyLine);
+              
       return $netteGMapViewer;
     }
 ```

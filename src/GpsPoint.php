@@ -7,10 +7,10 @@
 class GpsPoint extends Nette\Object {
 
     /** @var double */
-    protected $latitude;
+    public $latitude;
 
     /** @var double */
-    protected $longitude;
+    public $longitude;
 
     public function __construct($latitude, $longitude) {
         $this->setLatitude($latitude);
