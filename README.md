@@ -61,7 +61,7 @@ Usage with Bower
 					'vendor/nette/forms/src/assets/netteForms.js',
                     'bower_components/bootstrap/dist/js/bootstrap.min.js',
 
-                    'vendor/venca-x/nettegmap/client/js/jquery.netteGMap.j',
+                    'vendor/venca-x/nettegmap/client/js/jquery.netteGMap.js',
 
                     'www/js/main.js'
                 ],
