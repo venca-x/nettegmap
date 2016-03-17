@@ -18,7 +18,6 @@ matrix:
     - php: hhvm-nightly
 
 before_script:
-  - mkdir -p temp/cache
   - composer self-update
 
 install:

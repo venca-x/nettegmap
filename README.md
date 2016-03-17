@@ -15,13 +15,18 @@ You need use jQuery.
 Configuration
 -------------
 
-bootstrap.php
+bootstrap.php add register line OR add line in config.neon
 
 ```php
 
     Nette\Forms\NetteGMapPicker::register();//require only form picker
 
 ```
+
+OR add line to config.neon:
+
+    extensions:
+        replicator: Nette\Forms\NetteGMapPicker
 
 ```html
     <link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/netteGMap.css">
