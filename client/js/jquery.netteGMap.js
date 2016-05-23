@@ -47,7 +47,6 @@ $(document).ready(function () {
                 }
 
                 //view polyline
-                console.dir( dataMapAttr.polyline );
                 if (dataMapAttr.hasOwnProperty('polyline') && dataMapAttr.polyline.hasOwnProperty('coordinates')) {
 
                     var coordinatesArray = [];

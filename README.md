@@ -41,7 +41,7 @@ OR add line to config.neon:
 main.js
 ```html
     $( function() {
-        $( 'body' ).netteGMap( {
+        $( 'body' ).netteGMapPicker( {
         
             //my callback marker change position
             changePositionMarker: function( results ) {
