@@ -53,6 +53,9 @@ $(document).ready(function () {
 
                     for (i = 0; i < dataMapAttr.polyline.coordinates.length; i++) {
                         coordinatesArray.push({lat: dataMapAttr.polyline.coordinates[i].latitude, lng: dataMapAttr.polyline.coordinates[i].longitude});
+                        ////////
+                        var location = new google.maps.LatLng(dataMapAttr.polyline.coordinates[i].latitude, dataMapAttr.polyline.coordinates[i].longitude);
+                        bounds.extend(location);
                     }
 
                     var flightPath = new google.maps.Polyline({
