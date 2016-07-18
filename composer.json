@@ -1,24 +1,27 @@
 {
-    "name": "venca-x/nettegmap",
-    "description": "Nette addon. Viewer, picker and new layer for Google maps",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "vEnCa-X",
-            "email": "venca-x@seznam.cz"
-        }
-    ],
-    "require": {
-      "php": ">= 5.3.7",
-      "nette/application": ">=2.2.0",
-      "nette/bootstrap": ">=2.2.0",
-      "nette/utils": ">=2.2.0",
-      "nette/forms": "^2.3"
-    },
-    "require-dev": {
-        "nette/tester": "~1.0"
-    },
-    "autoload": {
-        "classmap": ["src/"]
+  "name": "venca-x/nettegmap",
+  "description": "Nette addon. Viewer, picker and new layer for Google maps",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "vEnCa-X",
+      "email": "venca-x@seznam.cz",
+      "homepage": "http://www.venca-x.cz"
     }
+  ],
+  "require": {
+    "php": ">= 5.3.7",
+    "nette/application": ">=2.2.0",
+    "nette/bootstrap": ">=2.2.0",
+    "nette/utils": ">=2.2.0",
+    "nette/forms": "^2.3"
+  },
+  "require-dev": {
+    "nette/tester": "~1.0"
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  }
 }

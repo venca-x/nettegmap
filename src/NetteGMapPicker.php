@@ -54,17 +54,17 @@ class NetteGMapPicker extends BaseControl {
         $searchBox->type = "text";
         $searchBox->id = "nettegmap-search-box";
         $searchBox->placeholder = "Vyhledávání";
-        $container->add($searchBox);
+        $container->addHtml($searchBox);
 
-        $container->add(Html::el('div', array("class" => "nettegmap-canvas")));
+        $container->addHtml(Html::el('div', array("class" => "nettegmap-canvas")));
 
         if( $this->showMyActualPositionButton )
         {
-            $container->add( "<button type=\"button\" id=\"my-actual-position\">Načti moji polohu</button>" );
+            $container->addHtml( "<button type=\"button\" id=\"my-actual-position\">Načti moji polohu</button>" );
         }
 
-        $container->add((string) $this->getTextboxControl("latitude"));
-        $container->add((string) $this->getTextboxControl("longitude"));
+        $container->addHtml((string) $this->getTextboxControl("latitude"));
+        $container->addHtml((string) $this->getTextboxControl("longitude"));
 
         return $container;
     }
