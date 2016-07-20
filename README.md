@@ -218,7 +218,7 @@ Set marker position from out script (JS)
 -------------
 ```js
 	$( "#my-div-map div.nettegmap-canvas" ).setMarkerPosition( 14.1111, 48.2222 );
-```js
+```
 
 Limits looking coordinates
 -------------
