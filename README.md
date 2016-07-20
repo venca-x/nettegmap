@@ -1,7 +1,7 @@
 nettegmap
 =========
 
-Nette addon. Viewer and picker on gmap
+Nette addon. Viewer and picker for Google maps
 
 Installation
 ------------
@@ -26,7 +26,7 @@ bootstrap.php add register line OR add line in config.neon
 OR add line to config.neon:
 
     extensions:
-        replicator: Nette\Forms\NetteGMapPicker
+        nettegmap: Nette\Forms\NetteGMapPicker
 
 ```html
     <link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/netteGMap.css">
@@ -63,12 +63,10 @@ Usage with Bower
         concat: {
             js: {
                 src: ['bower_components/jquery/dist/jquery.min.js',
-					'vendor/nette/forms/src/assets/netteForms.js',
-                    'bower_components/bootstrap/dist/js/bootstrap.min.js',
-
-                    'vendor/venca-x/nettegmap/client/js/jquery.netteGMap.js',
-
-                    'www/js/main.js'
+			'vendor/nette/forms/src/assets/netteForms.js',
+			'bower_components/bootstrap/dist/js/bootstrap.min.js',
+			'vendor/venca-x/nettegmap/client/js/jquery.netteGMap.js',
+                    	'www/js/main.js'
                 ],
                 dest: 'www/js/compiled.min.js'
             }
@@ -119,7 +117,7 @@ This example show how to show map with marker:
 
 Usage picker
 -------------
-This example show how to add in form picker for set GPS position:
+This example show how to set GPS position on map in form:
 
 
 ```php
@@ -148,7 +146,7 @@ This example show how to add in form picker for set GPS position:
     } 
 ```
 
-Default position picker:
+Set default position value for picker:
 ```php
     $form->setDefaults(array(
         'position' => array(
@@ -191,34 +189,36 @@ This example show how to add own picture on map:
     }
 
 Latte:
-
+```html
     {control netteGMapLayer}
-    
-
+```
 ----------------------------------------------------------------------------------------------------
 
 Get coordinates from address
 -------------
-
+```php
 	\GMapUtils::getCoordinatesFromAddress("Prague, Czech Republic")
-	
+```	
 return 
-
+```php
 	array( "gps_lat" => 50.0755381, "gps_lon" => 14.4378005)
-
+```
 
 Get address from coordinates
 -------------
-
+```php
 	\GMapUtils::getAddressFromCoordinates( 50.0755381, 14.4378005 )
-	
+```	
 return
-
+```php
 	Náměstí Míru 820/9, 120 00 Praha-Praha 2, Czech Republic
-	
-Set marker position from out script
+```
+
+Set marker position from out script (JS)
 -------------
+```js
 	$( "#my-div-map div.nettegmap-canvas" ).setMarkerPosition( 14.1111, 48.2222 );
+```js
 
 Limits looking coordinates
 -------------
