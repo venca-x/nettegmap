@@ -9,10 +9,10 @@ class BaseNetteGMap extends Nette\Application\UI\Control {
     private $child = NULL;
 
     /**
-     * Zoom of map (min: 0, max: )
+     * Zoom of map (min: 0, max: 16)
      * @var int Zoom of map 
      */
-    private $zoom = 12;
+    private $zoom = NULL;
 
     /**
      * @var int X size map
