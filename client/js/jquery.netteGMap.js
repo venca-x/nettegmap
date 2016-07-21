@@ -71,11 +71,17 @@ $(document).ready(function () {
                 if (typeof dataMapAttr.map.center !== 'undefined') {
                     //is set center
                     mapProp.center = new google.maps.LatLng(dataMapAttr.map.center.lng, dataMapAttr.map.center.lat);
+                } else {
+                    //set zoom and center auto - bounds
+                    map.fitBounds(bounds);
                 }
 
                 if (typeof dataMapAttr.map.zoom !== 'undefined') {
-                    //set zoom and center auto - bounds
-                    map.fitBounds(bounds);
+                    //hack set zoom after map.fitBounds
+                    var listener = google.maps.event.addListener(map, "idle", function() {
+                        map.setZoom(dataMapAttr.map.zoom);
+                        google.maps.event.removeListener(listener);
+                    });
                 }
 
                 //////////////////////////////////////////////////////////////////////////
