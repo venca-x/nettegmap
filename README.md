@@ -1,4 +1,4 @@
-Nette Newrelic
+Nettegmap
 ===============
 [![Build Status](https://travis-ci.org/venca-x/nettegmap.svg)](https://travis-ci.org/venca-x/nettegmap) 
 [![Latest Stable Version](https://poser.pugx.org/venca-x/nettegmap/v/stable.svg)](https://packagist.org/packages/venca-x/nettegmap) 
