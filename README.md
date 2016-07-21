@@ -1,5 +1,11 @@
-nettegmap
-=========
+Nette Newrelic
+===============
+[![Build Status](https://travis-ci.org/venca-x/nettegmap.svg)](https://travis-ci.org/venca-x/nettegmap) 
+[![Latest Stable Version](https://poser.pugx.org/venca-x/nettegmap/v/stable.svg)](https://packagist.org/packages/venca-x/nettegmap) 
+[![Total Downloads](https://poser.pugx.org/venca-x/nettegmap/downloads.svg)](https://packagist.org/packages/venca-x/nettegmap) 
+[![Latest Unstable Version](https://poser.pugx.org/venca-x/nettegmap/v/unstable.svg)](https://packagist.org/packages/venca-x/nettegmap) 
+[![License](https://poser.pugx.org/venca-x/nettegmap/license.svg)](https://packagist.org/packages/venca-x/nettegmap)
+
 
 Nette addon. Viewer and picker for Google maps
 
