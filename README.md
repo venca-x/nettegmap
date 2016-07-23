@@ -175,6 +175,7 @@ Usage layer
 -------------
 This example show how to add own picture on map:
 
+```php
 protected function createComponentNetteGMapLayer() {
     $netteGMapViewer = new \NetteGMapLayer();
     //$netteGMapViewer->setCenterMap(new \GpsPoint("48.977153", "14.454486"));
@@ -189,6 +190,7 @@ protected function createComponentNetteGMapLayer() {
     
     return $netteGMapViewer;
 }
+```
 
 Latte:
 ```html
