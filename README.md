@@ -136,7 +136,7 @@ protected function createComponentGMapForm() {
     
     $form->addSubmit('send', 'Save');
     
-    $form->onSuccess[] = $this->gMapFormSucceeded;
+    $form->onSuccess[] = [$this, 'gMapFormSucceeded'];
     return $form;
 }
 
