@@ -19,9 +19,6 @@
   "require-dev": {
     "nette/tester": "~1.0"
   },
-  "archive": {
-    "exclude": [ "/docs" ]
-  },
   "autoload": {
     "classmap": [
       "src/"
