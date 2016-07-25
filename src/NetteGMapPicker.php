@@ -35,6 +35,9 @@ class NetteGMapPicker extends BaseControl {
     public function __construct($label = NULL) {
         parent::__construct($label);
         $this->baseNetteGMap = new \BaseNetteGMap(array(), $this);
+        if($this->baseNetteGMap->getZoom() === NULL) {
+            $this->baseNetteGMap->setZoom(12);
+        }
     }
 
     public function loadHttpData() {

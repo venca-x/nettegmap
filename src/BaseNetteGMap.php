@@ -127,6 +127,14 @@ class BaseNetteGMap extends Nette\Application\UI\Control {
     }
 
     /**
+     * @return int
+     */
+    public function getZoom()
+    {
+        return $this->zoom;
+    }
+
+    /**
      * SetZoom map
      * @param int
      */
