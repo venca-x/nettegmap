@@ -37,29 +37,11 @@ extensions:
 <link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/netteGMap.css">
   
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=YOUR_API_KEY" type="text/javascript"></script>
 <script type="text/javascript" src="{$basePath}/js/jquery.netteGMap.js"></script>
 <script type="text/javascript" src="{$basePath}/js/main.js"></script>
 ```
-
-## Callback after change position marker in main.js
-main.js
-```js
-$( function() {
-    $( 'body' ).netteGMapPicker( {
-    
-        //my callback marker change position
-        changePositionMarker: function( results ) {    
-            var district = results[4].formatted_address.split(",");
-            //alert( district[0] );
-            $("select#frm-addCompetitionForm-district_id option").each(function() { this.selected = ( this.text === district[0] ); });
-            $("select#frm-editCompetitionForm-district_id option").each(function() { this.selected = ( this.text === district[0] ); });
-            //alert('changePositionMarker');
-        }
-    
-    } );	
-} );
-```
+You must generate **YOUR_API_KEY** in [https://console.developers.google.com/?hl=cs](https://console.developers.google.com/?hl=cs)
 
 Usage with Bower
 -------------
@@ -84,8 +66,32 @@ cssmin: {
 }
 ```
 
-Usage viewer
--------------
+
+Simple uase viewer marker
+-------------------------
+This example show how to view map with marker:
+
+```php
+protected function createComponentNetteGMapSimpleViewer() {
+    $markers = array();
+    $markers[] = new \Marker("home", "description", "49.1695254488", "14.2521617334");
+    
+    //$netteGMapViewer->setCenterMap(new \GpsPoint(49.1695254488,14.2521617334));
+    //$netteGMapViewer->setScrollwheel(TRUE);
+    //$netteGMapViewer->setZoom(12);
+    $netteGMapViewer = new \NetteGMapViewer($markers);
+          
+    return $netteGMapViewer;
+}
+```
+
+```html
+{control netteGMapSimpleViewer}
+```
+
+
+Usage viewer marker with polyline
+---------------------------------
 This example show how to show map with marker:
 
 ```php
@@ -95,9 +101,8 @@ protected function createComponentNetteGMapViewer() {
     
     //$netteGMapViewer->setCenterMap(new \GpsPoint(49.1695254488,14.2521617334));
     //$netteGMapViewer->setScrollwheel(TRUE);
-    $netteGMapViewer = new \NetteGMapViewer($markers);
     //$netteGMapViewer->setZoom(12);
-    
+    $netteGMapViewer = new \NetteGMapViewer($markers);    
     
     //add polyline to map
     $coordinates = array(
@@ -118,9 +123,9 @@ protected function createComponentNetteGMapViewer() {
 ```
 
 
-Usage picker
--------------
-This example show how to set GPS position on map in form:
+Usage picker in form
+--------------------
+This example show how to set GPS position on map:
 
 ```php
 protected function createComponentGMapForm() {
@@ -131,8 +136,7 @@ protected function createComponentGMapForm() {
         ->setWidth("500")
         ->setHeight("500");
         //->showMyActualPositionButton();
-        //$netteGMapViewer->setCenterMap(new \GpsPoint(49.1695254488,14.2521617334));
-        //$netteGMapViewer->setScrollwheel(TRUE);
+        //->setScrollwheel(TRUE);
     
     $form->addSubmit('send', 'Save');
     
@@ -229,3 +233,24 @@ Limits looking coordinates
 Users of the free API:
 2,500 requests per 24 hour period.
 5 requests per second.
+
+
+## Callback after change position marker in main.js
+When you want call your code after marker position chaged, you can be inspired by this code.
+main.js
+```js
+$( function() {
+    $( 'body' ).netteGMapPicker( {
+    
+        //my callback marker change position
+        changePositionMarker: function( results ) {    
+            var district = results[4].formatted_address.split(",");
+            //alert( district[0] );
+            $("select#frm-addCompetitionForm-district_id option").each(function() { this.selected = ( this.text === district[0] ); });
+            $("select#frm-editCompetitionForm-district_id option").each(function() { this.selected = ( this.text === district[0] ); });
+            //alert('changePositionMarker');
+        }
+    
+    } );	
+} );
+```
