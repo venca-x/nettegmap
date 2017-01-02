@@ -41,7 +41,9 @@ extensions:
 <script type="text/javascript" src="{$basePath}/js/jquery.netteGMap.js"></script>
 <script type="text/javascript" src="{$basePath}/js/main.js"></script>
 ```
-You must generate **YOUR_API_KEY** in [https://console.developers.google.com/?hl=cs](https://console.developers.google.com/?hl=cs)
+You must generate **YOUR_API_KEY** in [https://console.developers.google.com/?hl=cs](https://console.developers.google.com/?hl=cs) (Credentials -> API key)
+
+Enable **Google Maps JavaScript API** in [https://console.developers.google.com/?hl=cs](https://console.developers.google.com/?hl=cs) 
 
 Usage with Bower
 -------------
