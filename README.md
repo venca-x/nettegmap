@@ -9,6 +9,8 @@ Nettegmap
 
 Nette addon. Viewer and picker for Google maps
 
+**This branch is for Nette 2.4**
+
 Installation
 ------------
 
