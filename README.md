@@ -73,7 +73,7 @@ Simple uase viewer marker
 -------------------------
 This example show how to view map with marker:
 
-![Example](/docs/img/viewer-simple.png?raw=true "Example")
+![viewer simple](docs/img/viewer-simple.png?raw=true "Example")
 
 ```php
 protected function createComponentNetteGMapSimpleViewer() {
@@ -97,7 +97,7 @@ protected function createComponentNetteGMapSimpleViewer() {
 Usage viewer marker with polyline
 ---------------------------------
 This example show how to show map with marker:
-![Example](/docs/img/viewer-polyline.png?raw=true "Example")
+![viewer polyline](docs/img/viewer-polyline.png?raw=true "Example")
 ```php
 protected function createComponentNetteGMapViewerPolyline() {
     $markers = array();
@@ -130,7 +130,7 @@ protected function createComponentNetteGMapViewerPolyline() {
 Usage picker in form
 --------------------
 This example show how to set GPS position on map:
-![Example](/docs/img/picker.png?raw=true "Example")
+![picker](docs/img/picker.png?raw=true "Example")
 ```php
 protected function createComponentGMapForm() {
 
@@ -182,7 +182,7 @@ Nette\ArrayHash #f110
 Usage layer
 -------------
 This example show how to add own picture on map as a new layer:
-![Example](/docs/img/layer.png?raw=true "Example")
+![layer](docs/img/layer.png?raw=true "Example")
 ```php
 protected function createComponentNetteGMapLayer() {
     $netteGMapViewer = new \NetteGMapLayer();
