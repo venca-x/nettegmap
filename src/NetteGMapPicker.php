@@ -47,7 +47,7 @@ class NetteGMapPicker extends BaseControl
 	}
 
 
-	public function loadHttpData()
+	public function loadHttpData(): void
 	{
 		$data = $this->getHttpData(Form::DATA_TEXT, '[]');
 		$this->value = ['latitude' => $data[0], 'longitude' => $data[1]];
@@ -99,12 +99,12 @@ class NetteGMapPicker extends BaseControl
 	/*     * ************************************************************************ */
 
 	// fake "extends BaseNetteGMap" using magic function
-	public function __call($method, $args)
+	public function __call(string $name, array $args)
 	{
 		if (count($args) == 0) {
-			return $this->baseNetteGMap->$method([]);
+			return $this->baseNetteGMap->$name([]);
 		} else {
-			return $this->baseNetteGMap->$method($args[0]);
+			return $this->baseNetteGMap->$name($args[0]);
 		}
 	}
 
