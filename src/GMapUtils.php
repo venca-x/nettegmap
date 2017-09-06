@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
-class GMapUtils extends Nette\Object
-{
 
+class GMapUtils
+{
+	use Nette\SmartObject;
 
 	/**
 	 * Get coordinates from address
@@ -30,8 +31,8 @@ class GMapUtils extends Nette\Object
 
 	public static function getAddressFromCoordinates($lat, $lng)
 	{
-		$lat = urlencode($lat."");
-		$lng = urlencode($lng."");
+		$lat = urlencode($lat . '');
+		$lng = urlencode($lng . '');
 		$url = "http://maps.googleapis.com/maps/api/geocode/json?latlng={$lat},{$lng}&sensor=true";
 
 		$response = file_get_contents($url);
