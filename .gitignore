@@ -4,3 +4,5 @@
 /temp
 /tests/output
 /node_modules
+/nette-code-checker
+/nette-coding-standard
