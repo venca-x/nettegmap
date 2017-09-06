@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 use Tester\Assert;
 
 $container = require __DIR__ . '/bootstrap.php';
@@ -9,27 +9,26 @@ class GMapViewerTest extends Tester\TestCase
 	private $container;
 
 
-	function __construct(Nette\DI\Container $container)
+	public function __construct(Nette\DI\Container $container)
 	{
 		$this->container = $container;
 	}
 
 
-	function setUp()
+	public function setUp()
 	{
 	}
 
 
-	function testDummy()
+	public function testDummy()
 	{
-        //$markers = array();
-        //$markers[] = new \Marker("home", "description", "49.1695254488", "14.2521617334");
+		//$markers = array();
+		//$markers[] = new \Marker("home", "description", "49.1695254488", "14.2521617334");
 
-        //$netteGMapViewer = new \NetteGMapViewer($markers);
+		//$netteGMapViewer = new \NetteGMapViewer($markers);
 
-        Assert::true(TRUE);
+		Assert::true(true);
 	}
-
 }
 
 
