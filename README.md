@@ -9,12 +9,14 @@ Nettegmap
 
 Nette addon. Viewer and picker for Google maps
 
+**This branch is for Nette 3.0**
+
 Installation
 ------------
 
 Install with composer:
 ```
-composer require venca-x/nettegmap:~1.1
+composer require venca-x/nettegmap:dev-master
 ```
 You need use jQuery.
 
@@ -69,7 +71,7 @@ cssmin: {
 ```
 
 
-Simple uase viewer marker
+Simple usage viewer marker
 -------------------------
 This example show how to view map with marker:
 
