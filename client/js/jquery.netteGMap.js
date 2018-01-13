@@ -4,9 +4,11 @@ $(document).ready(function () {
 
         var map;
         var markers = []; //array of markers
-        var infowindow = new google.maps.InfoWindow();
+        var infowindow;
 
         function initializeMap(thisMap, dataMapAttr) {
+
+            infowindow = new google.maps.InfoWindow();
 
             var mapProp = {
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
