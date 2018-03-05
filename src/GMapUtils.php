@@ -18,7 +18,9 @@ class GMapUtils
 		$response = file_get_contents($url);
 		$json = json_decode($response, true);
 
-		if (!isset($json['results'][0])) {
+		if (isset($json['error_message'])) {
+			throw new Exception($json['error_message']);
+		} elseif (!isset($json['results'][0])) {
 			throw new Exception("Can't search address: " . $address);
 		}
 
@@ -38,7 +40,9 @@ class GMapUtils
 		$response = file_get_contents($url);
 		$json = json_decode($response, true);
 
-		if (!isset($json['results'][0]['formatted_address'])) {
+		if (isset($json['error_message'])) {
+			throw new Exception($json['error_message']);
+		} elseif (!isset($json['results'][0]['formatted_address'])) {
 			throw new Exception("Can't search address for GPS: " . $lat . ', ' . $lng);
 		}
 

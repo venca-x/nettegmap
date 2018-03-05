@@ -22,7 +22,7 @@ class NetteGMapPicker extends BaseControl
 	private $baseNetteGMap;
 
 	/**
-	 * @var boolean ShowMyActualPositionButton 
+	 * @var bool ShowMyActualPositionButton
 	 */
 	private $showMyActualPositionButton = false;
 

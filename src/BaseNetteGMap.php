@@ -160,7 +160,7 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 
 
 	/**
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isScrollwheel()
 	{
@@ -169,7 +169,7 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 
 
 	/**
-	 * @param boolean $scrollwheel
+	 * @param bool $scrollwheel
 	 */
 	public function setScrollwheel($scrollwheel)
 	{
