@@ -1,6 +1,7 @@
 <?php
 
-class Marker extends Nette\Object {
+class Marker {
+	use Nette\SmartObject;
 
     /** @var string */
     protected $title;

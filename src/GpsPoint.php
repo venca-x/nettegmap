@@ -4,7 +4,8 @@
  * Class Point
  * GPS point
  */
-class GpsPoint extends Nette\Object {
+class GpsPoint {
+	use Nette\SmartObject;
 
     /** @var double */
     public $latitude;

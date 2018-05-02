@@ -1,7 +1,8 @@
 <?php
 
-class GMapUtils extends Nette\Object
+class GMapUtils
 {
+	use Nette\SmartObject;
 
 
     /**

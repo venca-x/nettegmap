@@ -22,8 +22,8 @@ class GMapUtilsTest extends Tester\TestCase
 
 	function testDummy()
 	{
-		Assert::equal( array( "gps_lat" => 50.0755381, "gps_lon" => 14.4378005), \GMapUtils::getCoordinatesFromAddress("Prague, Czech Republic") );
-		Assert::same( "Náměstí Míru 820/9, Vinohrady, 120 00 Praha-Praha 2, Czechia", \GMapUtils::getAddressFromCoordinates( 50.0755381, 14.4378005 ) );
+		Assert::equal(['gps_lat' => 40.6898059, 'gps_lon' => -74.0450227], \GMapUtils::getCoordinatesFromAddress('1 Liberty Island - Ellis Island, New York, NY 10004, USA'));
+		Assert::same('1 Liberty Island - Ellis Island, New York, NY 10004, USA', \GMapUtils::getAddressFromCoordinates(40.6892494, -74.0445004));
 	}
 
 }

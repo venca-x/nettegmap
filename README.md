@@ -11,6 +11,11 @@ Nette addon. Viewer and picker for Google maps
 
 **This branch is for Nette 2.4**
 
+| Version   |  PHP      | Nette |
+| --------  | --------- | ------------- |
+| \>= 1.1.4 | \>= 5.3.7 | Nette 2.4: Nette\Object |
+| \>= 1.1.5 | \>= 7.1   | Nette 2.4: Nette\SmartObject |
+
 Installation
 ------------
 
