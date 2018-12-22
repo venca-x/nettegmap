@@ -52,7 +52,9 @@ extensions:
 ```
 You must generate **YOUR_API_KEY** in [https://console.developers.google.com/?hl=cs](https://console.developers.google.com/?hl=cs) (Credentials -> API key)
 
-Enable **Google Maps JavaScript API** in [https://console.developers.google.com/?hl=cs](https://console.developers.google.com/?hl=cs) 
+Enable **Maps JavaScript API** in [https://console.developers.google.com/?hl=cs](https://console.developers.google.com/?hl=cs) 
+
+For search by address in maps enable **Places API for Web** in [https://console.developers.google.com/?hl=cs](https://console.developers.google.com/?hl=cs) 
 
 Usage with Bower
 -------------
