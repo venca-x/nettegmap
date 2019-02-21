@@ -14,14 +14,10 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 	 */
 	private $zoom;
 
-	/**
-	 * @var int X size map
-	 */
+	/** @var int X size map */
 	private $sizeX = '100%';
 
-	/**
-	 * @var int Y size map
-	 */
+	/** @var int Y size map */
 	private $sizeY = '400px';
 
 	/**
@@ -30,19 +26,13 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 	 */
 	private $centerMapGpsPoint;
 
-	/**
-	 * @var bool Zoom map with scroll wheal in mouse
-	 */
+	/** @var bool Zoom map with scroll wheal in mouse */
 	private $scrollwheel = false;
 
-	/**
-	 * @var array $markers
-	 */
+	/** @var array $markers */
 	private $markers;
 
-	/**
-	 * @var PolyLine $polyLine
-	 */
+	/** @var PolyLine $polyLine */
 	private $polyLine;
 
 

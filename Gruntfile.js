@@ -28,10 +28,10 @@ module.exports = function (grunt) {
                 command: 'php nette-code-checker\\src\\code-checker.php -d src -d tests --short-arrays --strict-types --fix'
             },
             netteCodingStandard: {
-                command: 'php nette-coding-standard\\ecs check src tests --config nette-coding-standard\\coding-standard-php71.neon'
+                command: 'php nette-coding-standard\\ecs check src tests --config nette-coding-standard\\coding-standard-php71.yml'
             },
             netteCodingStandardFIX: {
-                command: 'php nette-coding-standard\\ecs check src tests --config nette-coding-standard\\coding-standard-php71.neon --fix'
+                command: 'php nette-coding-standard\\ecs check src tests --config nette-coding-standard\\coding-standard-php71.yml --fix'
             }
         }
     });

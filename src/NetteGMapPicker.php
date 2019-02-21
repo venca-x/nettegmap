@@ -21,16 +21,14 @@ class NetteGMapPicker extends BaseControl
 	 */
 	private $baseNetteGMap;
 
-	/**
-	 * @var bool ShowMyActualPositionButton
-	 */
+	/** @var bool ShowMyActualPositionButton */
 	private $showMyActualPositionButton = false;
 
 
 	public static function register()
 	{
 		Container::extensionMethod('addGMap', function (Container $form, $name, $label = null) {
-			$component = new NetteGMapPicker($label);
+			$component = new self($label);
 			$form->addComponent($component, $name);
 			return $component;
 		});

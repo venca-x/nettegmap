@@ -3,14 +3,10 @@ declare(strict_types=1);
 class PolyLine
 {
 
-	/**
-	 * @var array GpsPoint
-	 */
+	/** @var array GpsPoint */
 	private $coordinates;
 
-	/**
-	 * @var Stroke
-	 */
+	/** @var Stroke */
 	private $stroke;
 
 
