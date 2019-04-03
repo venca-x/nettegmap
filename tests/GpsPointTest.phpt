@@ -8,15 +8,6 @@ require __DIR__ . '/../src/GpsPoint.php';
 
 class GpsPointTest extends Tester\TestCase
 {
-	private $container;
-
-
-	public function __construct(Nette\DI\Container $container)
-	{
-		$this->container = $container;
-	}
-
-
 	public function setUp()
 	{
 	}
@@ -45,5 +36,5 @@ class GpsPointTest extends Tester\TestCase
 	}
 }
 
-$test = new GpsPointTest($container);
+$test = new GpsPointTest();
 $test->run();

@@ -6,15 +6,6 @@ $container = require __DIR__ . '/bootstrap.php';
 
 class GMapUtilsTest extends Tester\TestCase
 {
-	private $container;
-
-
-	public function __construct(Nette\DI\Container $container)
-	{
-		$this->container = $container;
-	}
-
-
 	public function setUp()
 	{
 	}
@@ -29,5 +20,5 @@ class GMapUtilsTest extends Tester\TestCase
 }
 
 
-$test = new GMapUtilsTest($container);
+$test = new GMapUtilsTest();
 $test->run();

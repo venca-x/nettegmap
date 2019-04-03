@@ -14,6 +14,9 @@ module.exports = function (grunt) {
             composer_update: {
                 command: 'composer update'
             },
+            composer_update_prefer_lowest: {
+                command: 'composer update --no-progress --prefer-dist --prefer-lowest --prefer-stable'
+            },
             test: {
                 command: 'vendor\\bin\\tester tests -s -p php'
             },
@@ -22,10 +25,10 @@ module.exports = function (grunt) {
                 command: 'composer create-project nette/code-checker nette-code-checker'
             },
             netteCodeChecker: {
-                command: 'php ..\\..\\nette-code-checker\\src\\code-checker -d src -d tests --short-arrays --strict-types'
+                command: 'php ..\\..\\nette-code-checker\\code-checker -d src -d tests --short-arrays --strict-types'
             },
             netteCodeCheckerFIX: {
-                command: 'php ..\\..\\nette-code-checker\\src\\code-checker -d src -d tests --short-arrays --strict-types --fix'
+                command: 'php ..\\..\\nette-code-checker\\code-checker -d src -d tests --short-arrays --strict-types --fix'
             },
             netteCodingStandard: {
                 command: 'php ..\\..\\nette-coding-standard\\ecs check src tests --config ..\\..\\nette-coding-standard\\coding-standard-php71.yml'

@@ -10,7 +10,7 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 
 	/**
 	 * Zoom of map (min: 0, max: 16)
-	 * @var int Zoom of map 
+	 * @var int Zoom of map
 	 */
 	private $zoom;
 
