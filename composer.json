@@ -27,6 +27,5 @@
     "classmap": [
       "src/"
     ]
-  },
-  "minimum-stability": "dev"
+  }
 }
