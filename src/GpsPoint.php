@@ -34,13 +34,15 @@ class GpsPoint
 		return $this->latitude;
 	}
 
-
-	public function setLatitude(mixed $latitude): void
+    /**
+     * @param mixed $latitude
+     */
+	public function setLatitude($latitude): void
 	{
 		if (is_float($latitude)) {
 			$this->latitude = $latitude;
 		} else {
-			$this->latitude = $this->setDimension($latitude);
+			$this->latitude = $this->setDimension($latitude.'');
 		}
 	}
 
@@ -50,13 +52,15 @@ class GpsPoint
 		return $this->longitude;
 	}
 
-
-	public function setLongitude(mixed $longitude): void
+    /**
+     * @param mixed $longitude
+     */
+	public function setLongitude($longitude): void
 	{
 		if (is_float($longitude)) {
 			$this->longitude = $longitude;
 		} else {
-			$this->longitude = $this->setDimension($longitude);
+			$this->longitude = $this->setDimension($longitude.'');
 		}
 	}
 }

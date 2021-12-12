@@ -25,7 +25,7 @@ class GpsPointTest extends Tester\TestCase
 		Assert::same(33.0, $point->getLongitude());
 
 
-		$point = new GpsPoint('23,123', '32,0');
+		$point = new GpsPoint(23.123, 32.0);
 		Assert::same(23.123, $point->getLatitude());
 		Assert::same(32.0, $point->getLongitude());
 

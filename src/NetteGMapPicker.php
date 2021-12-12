@@ -96,9 +96,9 @@ class NetteGMapPicker extends BaseControl
 	 * fake "extends BaseNetteGMap" using magic function
 	 * @param string $name
 	 * @param array<string>|null $args
-	 * @return BaseNetteGMap
+	 * @return mixed
 	 */
-	public function __call(string $name, ?array $args): BaseNetteGMap
+	public function __call(string $name, ?array $args)
 	{
 		if (count($args) == 0) {
 			return $this->baseNetteGMap->$name([]);
