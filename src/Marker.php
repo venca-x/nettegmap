@@ -14,7 +14,7 @@ class Marker
 	/** @var GpsPoint */
 	protected $gpsPoint;
 
-	/** @var url */
+	/** @var string URL of icon */
 	protected $icon;
 
 
@@ -41,13 +41,13 @@ class Marker
 
 	public function getLatitude()
 	{
-		return $this->latitude;
+		return $this->gpsPoint->getLatitude();
 	}
 
 
 	public function getLongitude()
 	{
-		return $this->longitude;
+		return $this->gpsPoint->getLongitude();
 	}
 
 

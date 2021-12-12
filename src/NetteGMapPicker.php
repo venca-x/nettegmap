@@ -51,16 +51,10 @@ class NetteGMapPicker extends BaseControl
 	}
 
 
-	public function setValue($value)
-	{
-		$this->value = $value;
-	}
-
-
 	public function getControl()
 	{
 		$container = Html::el('div', ['id' => 'nettegmap', 'class' => 'nettegmap-picker']);
-		$container->data('map-attr', json_encode($this->getMapParams()));
+		$container->data('map-attr', json_encode($this->baseNetteGMap->getMapParams()));
 
 		$searchBox = clone parent::getControl();
 		$searchBox->type = 'text';
