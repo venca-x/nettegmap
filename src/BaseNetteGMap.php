@@ -12,19 +12,19 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 	 * Zoom of map (min: 0, max: 16)
 	 * @var int Zoom of map
 	 */
-	private $zoom;
+	private int $zoom;
 
-	/** @var int X size map */
+	/** @var string X size map */
 	private $sizeX = '100%';
 
-	/** @var int Y size map */
+	/** @var string Y size map */
 	private $sizeY = '400px';
 
 	/**
 	 * @var GpsPoint
 	 * Center of map
 	 */
-	private $centerMapGpsPoint;
+	private GpsPoint $centerMapGpsPoint;
 
 	/** @var bool Zoom map with scroll wheal in mouse */
 	private $scrollwheel = false;
