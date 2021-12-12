@@ -1,6 +1,6 @@
 Nettegmap
 ===============
-[![Build Status](https://travis-ci.org/venca-x/nettegmap.svg)](https://travis-ci.org/venca-x/nettegmap) 
+[![Build Status](https://app.travis-ci.com/venca-x/nettegmap.svg?branch=master)](https://app.travis-ci.com/venca-x/nettegmap) 
 [![Latest Stable Version](https://poser.pugx.org/venca-x/nettegmap/v/stable.svg)](https://packagist.org/packages/venca-x/nettegmap) 
 [![Total Downloads](https://poser.pugx.org/venca-x/nettegmap/downloads.svg)](https://packagist.org/packages/venca-x/nettegmap) 
 [![Latest Unstable Version](https://poser.pugx.org/venca-x/nettegmap/v/unstable.svg)](https://packagist.org/packages/venca-x/nettegmap) 
