@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 /**
  * Class AbstractNetteGMap
  * Base abstract map class for propertis in map
@@ -10,9 +11,9 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 
 	/**
 	 * Zoom of map (min: 0, max: 16)
-	 * @var int Zoom of map
+	 * @var int|null Zoom of map
 	 */
-	private int $zoom;
+	private ?int $zoom;
 
 	/** @var string X size map */
 	private $sizeX = '100%';
@@ -127,7 +128,7 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 
 
 	/**
-	 * @return int
+	 * @return int|null
 	 */
 	public function getZoom()
 	{
