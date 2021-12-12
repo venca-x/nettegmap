@@ -37,7 +37,7 @@ module.exports = function (grunt) {
                 command: 'php ..\\..\\nette-coding-standard\\ecs check src tests --preset php71 --fix'
             },
             phpStan: {
-                command: 'c:\\www\\phpstan-nette\\vendor\\bin\\phpstan.bat analyse src tests --level=1 --memory-limit=4000M'
+                command: 'c:\\www\\phpstan-nette\\vendor\\bin\\phpstan.bat analyse src tests --level=2 --memory-limit=4000M'
             }
         }
     });

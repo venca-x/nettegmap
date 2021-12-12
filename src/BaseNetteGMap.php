@@ -137,9 +137,10 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 
 	/**
 	 * SetZoom map
-	 * @param int
+	 * @param int $zoom
+	 * @return mixed
 	 */
-	public function setZoom($zoom)
+	public function setZoom(int $zoom)
 	{
 		$this->zoom = $zoom;
 		return $this->child;
@@ -166,11 +167,11 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 
 
 	/**
-	 * @param type $dimension - Dimension for verification
-	 * @return string - dimension
-	 * @throws \Exception
+	 * @param string $dimension
+	 * @return string
+	 * @throws Exception
 	 */
-	private function codeDimension($dimension)
+	private function codeDimension(string $dimension)
 	{
 		preg_match('/(\d+)(px|%)?/i', $dimension, $matches);
 

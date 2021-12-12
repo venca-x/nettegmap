@@ -3,18 +3,17 @@ declare(strict_types=1);
 class PolyLine
 {
 
-	/** @var array GpsPoint */
-	private $coordinates;
+	/** @var array<GpsPoint> */
+	private array $coordinates;
 
 	/** @var Stroke */
-	private $stroke;
+	private Stroke $stroke;
 
 
 	/**
-	 * PolyLine constructor.
-	 * @param $coordinates array GpsPoint
+	 * @param array<GpsPoint> $coordinates
 	 */
-	public function __construct($coordinates)
+	public function __construct(array $coordinates)
 	{
 		$this->stroke = new Stroke;
 		$this->coordinates = $coordinates;
