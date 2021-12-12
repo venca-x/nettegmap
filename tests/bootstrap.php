@@ -12,18 +12,7 @@ Tester\Environment::setup();
 date_default_timezone_set('Europe/Prague');
 
 
-function before(\Closure $function = null)
-{
-	static $val;
-	if (!func_num_args()) {
-		return $val ? $val() : null;
-	}
-	$val = $function;
-}
-
-
 function test(\Closure $function): void
 {
-	before();
 	$function();
 }

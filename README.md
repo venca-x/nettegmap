@@ -94,7 +94,7 @@ protected function createComponentNetteGMapSimpleViewer() {
     $markers[] = new \Marker("home", "description", "49.1695254488", "14.2521617334");
     
     //$netteGMapViewer->setCenterMap(new \GpsPoint(49.1695254488,14.2521617334));
-    //$netteGMapViewer->setScrollwheel(TRUE);
+    //$netteGMapViewer->setScrollWheel(true);
     //$netteGMapViewer->setZoom(12);
     $netteGMapViewer = new \NetteGMapViewer($markers);
           

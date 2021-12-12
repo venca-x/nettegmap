@@ -7,7 +7,8 @@ declare(strict_types=1);
  */
 class BaseNetteGMap extends Nette\Application\UI\Control
 {
-	private $child;
+	/** @var Nette\Application\UI\Control */
+	private Nette\Application\UI\Control $child;
 
 	/**
 	 * Zoom of map (min: 0, max: 16)
@@ -30,26 +31,32 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 	/** @var bool Zoom map with scroll wheal in mouse */
 	private $scrollwheel = false;
 
-	/** @var array $markers */
-	private $markers;
+	/** @var array<int, mixed> $markers */
+	private array $markers;
 
 	/** @var PolyLine $polyLine */
-	private $polyLine;
+	private PolyLine $polyLine;
 
 
-	public function __construct($markers, $child)
+	/**
+	 * @param array<Marker> $markers
+	 * @param mixed $child
+	 */
+	public function __construct(array $markers, mixed $child)
 	{
-		$this->markers = $markers;
 		$this->child = $child;
 
 		//convert marker object to array
-		for ($i = 0; $i < count($this->markers); $i++) {
-			$this->markers[$i] = $this->markers[$i]->getArray();
+		foreach ($markers as $marker) {
+			$this->markers[] = $marker->getArray();
 		}
 	}
 
 
-	public function getMapParams()
+	/**
+	 * @return array<string, mixed>.
+	 */
+	public function getMapParams(): array
 	{
 		$array = [];
 
@@ -89,7 +96,7 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 	 * Add Poly line to map
 	 * @param PolyLine $polyLine
 	 */
-	public function setPolyLine(PolyLine $polyLine)
+	public function setPolyLine(PolyLine $polyLine): void
 	{
 		$this->polyLine = $polyLine;
 	}
@@ -99,7 +106,7 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 	 * @param GpsPoint $centerMap
 	 * Set hard center of map, if is null is set automatic from markers
 	 */
-	public function setCenterMap(GpsPoint $centerMap)
+	public function setCenterMap(GpsPoint $centerMap): void
 	{
 		$this->centerMapGpsPoint = $centerMap;
 	}
@@ -107,9 +114,11 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 
 	/**
 	 * SetWidht map
-	 * @param string|int $width int(px), int[px], int[%]
+	 * @param string $width int(px), int[px], int[%]
+	 * @return \Nette\Application\UI\Control
+	 * @throws Exception
 	 */
-	public function setWidth($width)
+	public function setWidth(string $width): Nette\Application\UI\Control
 	{
 		$this->sizeX = $this->codeDimension($width);
 		return $this->child;
@@ -118,19 +127,18 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 
 	/**
 	 * SetHeight map
-	 * @param string|int $height int(px), int[px], int[%]
+	 * @param string $height int(px), int[px], int[%]
+	 * @return \Nette\Application\UI\Control
+	 * @throws Exception
 	 */
-	public function setHeight($height)
+	public function setHeight(string $height): Nette\Application\UI\Control
 	{
 		$this->sizeY = $this->codeDimension($height);
 		return $this->child;
 	}
 
 
-	/**
-	 * @return int|null
-	 */
-	public function getZoom()
+	public function getZoom(): ?int
 	{
 		return $this->zoom;
 	}
@@ -139,30 +147,24 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 	/**
 	 * SetZoom map
 	 * @param int $zoom
-	 * @return mixed
+	 * @return \Nette\Application\UI\Control
 	 */
-	public function setZoom(int $zoom)
+	public function setZoom(int $zoom): Nette\Application\UI\Control
 	{
 		$this->zoom = $zoom;
 		return $this->child;
 	}
 
 
-	/**
-	 * @return bool
-	 */
-	public function isScrollwheel()
+	public function isScrollWheel(): bool
 	{
 		return $this->scrollwheel;
 	}
 
 
-	/**
-	 * @param bool $scrollwheel
-	 */
-	public function setScrollwheel($scrollwheel)
+	public function setScrollWheel(bool $scrollWheel): Nette\Application\UI\Control
 	{
-		$this->scrollwheel = (bool) $scrollwheel;
+		$this->scrollwheel = $scrollWheel;
 		return $this->child;
 	}
 
@@ -172,22 +174,22 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 	 * @return string
 	 * @throws Exception
 	 */
-	private function codeDimension(string $dimension)
+	private function codeDimension(string $dimension): string
 	{
 		preg_match('/(\d+)(px|%)?/i', $dimension, $matches);
 
 		$number = $matches[1];
-		$scale = @$matches[2];
+		$unit = @$matches[2];
 
-		if ($scale == '') {
+		if ($unit == '') {
 			//integer, add px
 			return $number . 'px';
-		} elseif ($scale == 'px') {
+		} elseif ($unit == 'px') {
 			//is px
-			return $number . '' . $scale;
-		} elseif ($scale == '%') {
+			return $number . '' . $unit;
+		} elseif ($unit == '%') {
 			//is %
-			return $number . '' . $scale;
+			return $number . '' . $unit;
 		} else {
 			throw new \Exception('Dimensions must be in number, px or %');
 		}

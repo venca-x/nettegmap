@@ -20,7 +20,10 @@ class PolyLine
 	}
 
 
-	public function getArray()
+	/**
+	 * @return array<string, mixed>
+	 */
+	public function getArray(): array
 	{
 		return ['stroke' => $this->stroke->getArray(), 'coordinates' => $this->coordinates];
 	}

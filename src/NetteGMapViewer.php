@@ -1,17 +1,21 @@
 <?php
 declare(strict_types=1);
+
 /**
  * Class NetteGMapViewer
  */
 class NetteGMapViewer extends BaseNetteGMap
 {
-	public function __construct($markers)
+	/**
+	 * @param array<Marker> $markers
+	 */
+	public function __construct(array $markers)
 	{
 		parent::__construct($markers, $this);
 	}
 
 
-	public function render()
+	public function render(): void
 	{
 		$template = $this->template;
 		$template->json = json_encode($this->getMapParams());

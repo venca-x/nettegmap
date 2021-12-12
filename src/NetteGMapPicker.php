@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Nette\Forms;
 
+use BaseNetteGMap;
 use Nette\Forms\Controls\BaseControl;
 use Nette\Utils\Html;
 
@@ -16,7 +17,7 @@ class NetteGMapPicker extends BaseControl
 
 	/**
 	 * Class for "Extends"
-	 * @var \BaseNetteGMap
+	 * @var BaseNetteGMap
 	 */
 	private $baseNetteGMap;
 
@@ -24,7 +25,7 @@ class NetteGMapPicker extends BaseControl
 	private $showMyActualPositionButton = false;
 
 
-	public static function register()
+	public static function register(): void
 	{
 		Container::extensionMethod('addGMap', function (Container $form, $name, $label = null) {
 			$component = new self($label);
@@ -34,10 +35,10 @@ class NetteGMapPicker extends BaseControl
 	}
 
 
-	public function __construct($label = null)
+	public function __construct(?string $label = null)
 	{
 		parent::__construct($label);
-		$this->baseNetteGMap = new \BaseNetteGMap([], $this);
+		$this->baseNetteGMap = new BaseNetteGMap([], $this);
 		if ($this->baseNetteGMap->getZoom() === null) {
 			$this->baseNetteGMap->setZoom(12);
 		}
@@ -75,7 +76,11 @@ class NetteGMapPicker extends BaseControl
 	}
 
 
-	public function getTextboxControl($name)
+	/**
+	 * @param string $name
+	 * @return Html|string
+	 */
+	public function getTextboxControl(string $name)
 	{
 		$control = clone parent::getControl();
 		$control->type = 'text';
@@ -87,8 +92,13 @@ class NetteGMapPicker extends BaseControl
 	}
 
 
-	// fake "extends BaseNetteGMap" using magic function
-	public function __call(string $name, array $args)
+	/**
+	 * fake "extends BaseNetteGMap" using magic function
+	 * @param string $name
+	 * @param array<string>|null $args
+	 * @return BaseNetteGMap
+	 */
+	public function __call(string $name, ?array $args): BaseNetteGMap
 	{
 		if (count($args) == 0) {
 			return $this->baseNetteGMap->$name([]);
@@ -101,7 +111,7 @@ class NetteGMapPicker extends BaseControl
 	/**
 	 * Show button for my actual position
 	 */
-	public function showMyActualPositionButton()
+	public function showMyActualPositionButton(): void
 	{
 		$this->showMyActualPositionButton = true;
 	}

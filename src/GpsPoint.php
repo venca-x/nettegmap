@@ -9,52 +9,54 @@ class GpsPoint
 {
 	use Nette\SmartObject;
 
-	/** @var double */
-	public $latitude;
+	/** @var float */
+	public float $latitude;
 
-	/** @var double */
-	public $longitude;
+	/** @var float */
+	public float $longitude;
 
 
-	public function __construct($latitude, $longitude)
+	public function __construct(float $latitude, float $longitude)
 	{
 		$this->setLatitude($latitude);
 		$this->setLongitude($longitude);
 	}
 
 
-	private function setDimension($dimension)
+	private function setDimension(string $dimension): float
 	{
-		return str_replace(',', '.', $dimension);
+		return (float) str_replace(',', '.', $dimension);
 	}
 
 
-	/**
-	 * @return double
-	 */
-	public function getLatitude()
+	public function getLatitude(): float
 	{
 		return $this->latitude;
 	}
 
 
-	public function setLatitude($latitude)
+	public function setLatitude(mixed $latitude): void
 	{
-		$this->latitude = (float) $this->setDimension($latitude);
+		if (is_float($latitude)) {
+			$this->latitude = $latitude;
+		} else {
+			$this->latitude = $this->setDimension($latitude);
+		}
 	}
 
 
-	/**
-	 * @return double Double
-	 */
-	public function getLongitude()
+	public function getLongitude(): float
 	{
 		return $this->longitude;
 	}
 
 
-	public function setLongitude($longitude)
+	public function setLongitude(mixed $longitude): void
 	{
-		$this->longitude = (float) $this->setDimension($longitude);
+		if (is_float($longitude)) {
+			$this->longitude = $longitude;
+		} else {
+			$this->longitude = $this->setDimension($longitude);
+		}
 	}
 }
