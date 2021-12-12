@@ -35,6 +35,9 @@ module.exports = function (grunt) {
             },
             netteCodingStandardFIX: {
                 command: 'php ..\\..\\nette-coding-standard\\ecs check src tests --preset php71 --fix'
+            },
+            phpStan: {
+                command: 'c:\\www\\phpstan-nette\\vendor\\bin\\phpstan.bat analyse src tests --level=1 --memory-limit=4000M'
             }
         }
     });
@@ -45,5 +48,6 @@ module.exports = function (grunt) {
     grunt.registerTask('netteCodeCheckerFIX', ['shell:netteCodeCheckerFIX']);
     grunt.registerTask('netteCodingStandard', ['shell:netteCodingStandard']);
     grunt.registerTask('netteCodingStandardFIX', ['shell:netteCodingStandardFIX']);
+    grunt.registerTask('phpStan', ['shell:phpStan']);
 
 };
