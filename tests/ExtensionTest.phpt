@@ -27,9 +27,10 @@ class ExtensionTest extends Tester\TestCase
 			->setWidth('500')
 			->setHeight('500');
 
+		Assert::type(Nette\Forms\NetteGMapPicker::class, $mapControl);
 		Assert::same('<div id="nettegmap" class="nettegmap-picker" data-map-attr=\'{"map":{"size":{"x":"500px","y":"500px"},"scrollwheel":false,"zoom":12}}\'><input type="text" name="position" id="nettegmap-search-box" placeholder="Vyhledávání"><div class="nettegmap-canvas"></div><input type="text" name="position[latitude]" id="latitude"><input type="text" name="position[longitude]" id="longitude"></div>', (string) $mapControl->getControl());
 	}
 }
 
-$test = new ExtensionTest();
+$test = new ExtensionTest;
 $test->run();

@@ -30,7 +30,7 @@ class GpsPoint
 
 
 	/**
-	 * @return Double
+	 * @return double
 	 */
 	public function getLatitude()
 	{
@@ -38,9 +38,6 @@ class GpsPoint
 	}
 
 
-	/**
-	 * @param $latitude
-	 */
 	public function setLatitude($latitude)
 	{
 		$this->latitude = (float) $this->setDimension($latitude);
@@ -48,7 +45,7 @@ class GpsPoint
 
 
 	/**
-	 * @return Double Double
+	 * @return double Double
 	 */
 	public function getLongitude()
 	{
@@ -56,9 +53,6 @@ class GpsPoint
 	}
 
 
-	/**
-	 * @param $longitude
-	 */
 	public function setLongitude($longitude)
 	{
 		$this->longitude = (float) $this->setDimension($longitude);

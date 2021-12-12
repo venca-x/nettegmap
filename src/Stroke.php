@@ -21,7 +21,7 @@ class Stroke
 			'color' => $this->color,
 			'opacity' => $this->opacity,
 			'weight' => $this->weight,
-			];
+		];
 	}
 
 

@@ -94,9 +94,6 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 	}
 
 
-	/*     * ************************************************************************ */
-
-
 	/**
 	 * @param GpsPoint $centerMap
 	 * Set hard center of map, if is null is set automatic from markers

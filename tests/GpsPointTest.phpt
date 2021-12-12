@@ -36,5 +36,5 @@ class GpsPointTest extends Tester\TestCase
 	}
 }
 
-$test = new GpsPointTest();
+$test = new GpsPointTest;
 $test->run();

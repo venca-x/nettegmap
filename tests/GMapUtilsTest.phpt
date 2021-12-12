@@ -20,5 +20,5 @@ class GMapUtilsTest extends Tester\TestCase
 }
 
 
-$test = new GMapUtilsTest();
+$test = new GMapUtilsTest;
 $test->run();

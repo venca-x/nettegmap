@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Nette\Forms;
 
-use Nette\Forms\Container;
 use Nette\Forms\Controls\BaseControl;
 use Nette\Utils\Html;
 
@@ -88,13 +87,11 @@ class NetteGMapPicker extends BaseControl
 		$control->type = 'text';
 		$control->id = $name;
 		$control->name .= "[$name]";
-		$control->value = $this->value[$name];
+		//$control->value = $this->value[$name];
 
 		return $control;
 	}
 
-
-	/*     * ************************************************************************ */
 
 	// fake "extends BaseNetteGMap" using magic function
 	public function __call(string $name, array $args)

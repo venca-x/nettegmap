@@ -16,7 +16,7 @@ class PolyLine
 	 */
 	public function __construct($coordinates)
 	{
-		$this->stroke = new Stroke();
+		$this->stroke = new Stroke;
 		$this->coordinates = $coordinates;
 	}
 

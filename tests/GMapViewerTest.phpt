@@ -23,5 +23,5 @@ class GMapViewerTest extends Tester\TestCase
 }
 
 
-$test = new GMapViewerTest();
+$test = new GMapViewerTest;
 $test->run();

@@ -7,7 +7,7 @@ class NetteGMapLayer extends BaseNetteGMap
 {
 
 	/**
-	 * @var String
+	 * @var string
 	 * URL for layer image
 	 */
 	private $layerUrlImage;
@@ -49,7 +49,7 @@ class NetteGMapLayer extends BaseNetteGMap
 
 
 	/**
-	 * @return String
+	 * @return string
 	 */
 	public function getLayerUrlImage()
 	{
@@ -58,7 +58,7 @@ class NetteGMapLayer extends BaseNetteGMap
 
 
 	/**
-	 * @param String $layerUrlImage
+	 * @param string $layerUrlImage
 	 */
 	public function setLayerUrlImage($layerUrlImage)
 	{
@@ -75,9 +75,6 @@ class NetteGMapLayer extends BaseNetteGMap
 	}
 
 
-	/**
-	 * @param GpsPoint $layerLeftDownCorner
-	 */
 	public function setLayerLeftDownCorner(GpsPoint $layerLeftDownCorner)
 	{
 		$this->layerLeftDownCorner = $layerLeftDownCorner;
@@ -93,9 +90,6 @@ class NetteGMapLayer extends BaseNetteGMap
 	}
 
 
-	/**
-	 * @param GpsPoint $layerRightTopCorner
-	 */
 	public function setLayerRightTopCorner(GpsPoint $layerRightTopCorner)
 	{
 		$this->layerRightTopCorner = $layerRightTopCorner;
