@@ -10,10 +10,10 @@ class GpsPoint
 	use Nette\SmartObject;
 
 	/** @var float */
-	public float $latitude;
+	public $latitude;
 
 	/** @var float */
-	public float $longitude;
+	public $longitude;
 
 
 	public function __construct(float $latitude, float $longitude)
