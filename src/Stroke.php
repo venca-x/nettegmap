@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
+
 class Stroke
 {
-	private $color = '#FF0000';
-	private $opacity = 1.0;
-	private $weight = 2;
+	private string $color = '#FF0000';
+	private float $opacity = 1.0;
+	private int $weight = 2;
 
 
 	/**
@@ -15,7 +16,10 @@ class Stroke
 	}
 
 
-	public function getArray()
+	/**
+	 * @return array<string, mixed>
+	 */
+	public function getArray(): array
 	{
 		return [
 			'color' => $this->color,
@@ -25,55 +29,37 @@ class Stroke
 	}
 
 
-	/**
-	 * @return string
-	 */
-	public function getColor()
+	public function getColor(): string
 	{
 		return $this->color;
 	}
 
 
-	/**
-	 * @param string $color
-	 */
-	public function setColor($color)
+	public function setColor(string $color): void
 	{
 		$this->color = $color;
 	}
 
 
-	/**
-	 * @return float
-	 */
-	public function getOpacity()
+	public function getOpacity(): float
 	{
 		return $this->opacity;
 	}
 
 
-	/**
-	 * @param float $opacity
-	 */
-	public function setOpacity($opacity)
+	public function setOpacity(float $opacity): void
 	{
 		$this->opacity = $opacity;
 	}
 
 
-	/**
-	 * @return int
-	 */
-	public function getWeight()
+	public function getWeight(): int
 	{
 		return $this->weight;
 	}
 
 
-	/**
-	 * @param int $weight
-	 */
-	public function setWeight($weight)
+	public function setWeight(int $weight): void
 	{
 		$this->weight = $weight;
 	}

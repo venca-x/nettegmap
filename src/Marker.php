@@ -6,20 +6,25 @@ class Marker
 	use Nette\SmartObject;
 
 	/** @var string */
-	protected $title;
+	protected string $title;
 
 	/** @var string */
-	protected $description;
+	protected string $description;
 
 	/** @var GpsPoint */
-	protected $gpsPoint;
+	protected GpsPoint $gpsPoint;
 
-	/** @var url */
-	protected $icon;
+	/** @var string URL of icon */
+	protected ?string $icon;
 
 
-	public function __construct($title, $description, $latitude, $longitude, $icon = null)
-	{
+	public function __construct(
+		string $title,
+		string $description,
+		float $latitude,
+		float $longitude,
+		?string $icon = null
+	) {
 		$this->setTitle($title);
 		$this->setDescription($description);
 		$this->gpsPoint = new GpsPoint($latitude, $longitude);
@@ -27,67 +32,70 @@ class Marker
 	}
 
 
-	public function getTitle()
+	public function getTitle(): string
 	{
 		return $this->title;
 	}
 
 
-	public function getDescription()
+	public function getDescription(): string
 	{
 		return $this->description;
 	}
 
 
-	public function getLatitude()
+	public function getLatitude(): float
 	{
-		return $this->latitude;
+		return $this->gpsPoint->getLatitude();
 	}
 
 
-	public function getLongitude()
+	public function getLongitude(): float
 	{
-		return $this->longitude;
+		return $this->gpsPoint->getLongitude();
 	}
 
 
-	public function getIcon()
+	public function getIcon(): string
 	{
 		return $this->icon;
 	}
 
 
-	public function setTitle($title)
+	public function setTitle(string $title): void
 	{
 		$this->title = $title;
 	}
 
 
-	public function setDescription($description)
+	public function setDescription(string $description): void
 	{
 		$this->description = $description;
 	}
 
 
-	public function setLatitude($latitude)
+	public function setLatitude(float $latitude): void
 	{
 		$this->gpsPoint->setLatitude($latitude);
 	}
 
 
-	public function setLongitude($longitude)
+	public function setLongitude(float $longitude): void
 	{
 		$this->gpsPoint->setLongitude($longitude);
 	}
 
 
-	public function setIcon($icon)
+	public function setIcon(string $icon): void
 	{
 		$this->icon = $icon;
 	}
 
 
-	public function getArray()
+	/**
+	 * @return array<string, mixed>
+	 */
+	public function getArray(): array
 	{
 		$array = ['title' => $this->title, 'description' => $this->description, 'latitude' => $this->gpsPoint->getLatitude(), 'longitude' => $this->gpsPoint->getLongitude()];
 		if ($this->icon != null) {

@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 /**
  * Class NetteGMapViewer
  */
@@ -10,28 +11,31 @@ class NetteGMapLayer extends BaseNetteGMap
 	 * @var string
 	 * URL for layer image
 	 */
-	private $layerUrlImage;
+	private string $layerUrlImage;
 
 	/**
 	 * @var GpsPoint
 	 * Left down corner for position layer image
 	 */
-	private $layerLeftDownCorner;
+	private GpsPoint $layerLeftDownCorner;
 
 	/**
 	 * @var GpsPoint
 	 * Right top corner for position layer image
 	 */
-	private $layerRightTopCorner;
+	private GpsPoint $layerRightTopCorner;
 
 
-	public function __construct($markers = [])
+	/**
+	 * @param array<Marker> $markers
+	 */
+	public function __construct(array $markers = [])
 	{
 		parent::__construct($markers, $this);
 	}
 
 
-	public function render()
+	public function render(): void
 	{
 		$template = $this->template;
 
@@ -48,49 +52,37 @@ class NetteGMapLayer extends BaseNetteGMap
 	}
 
 
-	/**
-	 * @return string
-	 */
-	public function getLayerUrlImage()
+	public function getLayerUrlImage(): string
 	{
 		return $this->layerUrlImage;
 	}
 
 
-	/**
-	 * @param string $layerUrlImage
-	 */
-	public function setLayerUrlImage($layerUrlImage)
+	public function setLayerUrlImage(string $layerUrlImage): void
 	{
 		$this->layerUrlImage = $layerUrlImage;
 	}
 
 
-	/**
-	 * @return GpsPoint
-	 */
-	public function getLayerLeftDownCorner()
+	public function getLayerLeftDownCorner(): GpsPoint
 	{
 		return $this->layerLeftDownCorner;
 	}
 
 
-	public function setLayerLeftDownCorner(GpsPoint $layerLeftDownCorner)
+	public function setLayerLeftDownCorner(GpsPoint $layerLeftDownCorner): void
 	{
 		$this->layerLeftDownCorner = $layerLeftDownCorner;
 	}
 
 
-	/**
-	 * @return GpsPoint
-	 */
-	public function getLayerRightTopCorner()
+	public function getLayerRightTopCorner(): GpsPoint
 	{
 		return $this->layerRightTopCorner;
 	}
 
 
-	public function setLayerRightTopCorner(GpsPoint $layerRightTopCorner)
+	public function setLayerRightTopCorner(GpsPoint $layerRightTopCorner): void
 	{
 		$this->layerRightTopCorner = $layerRightTopCorner;
 	}

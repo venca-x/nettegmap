@@ -7,10 +7,11 @@ class GMapUtils
 
 	/**
 	 * Get coordinates from address
-	 * @param $address
-	 * @return array
+	 * @param string $address
+	 * @return array<string, string>
+	 * @throws Exception
 	 */
-	public static function getCoordinatesFromAddress($address)
+	public static function getCoordinatesFromAddress(string $address): array
 	{
 		$address = urlencode($address);
 		$url = 'http://maps.google.com/maps/api/geocode/json?sensor=false&address=' . $address;
@@ -31,7 +32,13 @@ class GMapUtils
 	}
 
 
-	public static function getAddressFromCoordinates($lat, $lng)
+	/**
+	 * @param float $lat
+	 * @param float $lng
+	 * @return string
+	 * @throws Exception
+	 */
+	public static function getAddressFromCoordinates(float $lat, float $lng): string
 	{
 		$lat = urlencode($lat . '');
 		$lng = urlencode($lng . '');

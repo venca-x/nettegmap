@@ -10,14 +10,14 @@
     }
   ],
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.2",
     "nette/application": "^3.0",
     "nette/bootstrap": "^3.0",
     "nette/utils": "^3.0",
     "nette/forms": "^3.0"
   },
   "require-dev": {
-    "nette/tester": "^2.0"
+    "nette/tester": "^2.4"
   },
   "conflict": {
     "nette/forms": "<3.0",
