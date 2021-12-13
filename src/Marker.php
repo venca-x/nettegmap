@@ -14,15 +14,22 @@ class Marker
 	/** @var GpsPoint */
 	protected GpsPoint $gpsPoint;
 
-	/** @var string URL of icon */
+	/** @var string|null URL of icon */
 	protected ?string $icon;
 
 
+	/**
+	 * @param string $title
+	 * @param string $description
+	 * @param mixed $latitude
+	 * @param mixed $longitude
+	 * @param string|null $icon
+	 */
 	public function __construct(
 		string $title,
 		string $description,
-		float $latitude,
-		float $longitude,
+		$latitude,
+		$longitude,
 		?string $icon = null
 	) {
 		$this->setTitle($title);
@@ -86,7 +93,7 @@ class Marker
 	}
 
 
-	public function setIcon(string $icon): void
+	public function setIcon(?string $icon): void
 	{
 		$this->icon = $icon;
 	}

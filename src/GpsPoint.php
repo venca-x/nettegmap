@@ -16,7 +16,11 @@ class GpsPoint
 	public $longitude;
 
 
-	public function __construct(float $latitude, float $longitude)
+	/**
+	 * @param mixed $latitude
+	 * @param mixed $longitude
+	 */
+	public function __construct($latitude, $longitude)
 	{
 		$this->setLatitude($latitude);
 		$this->setLongitude($longitude);
