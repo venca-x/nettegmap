@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 class PolyLine
 {
-
 	/** @var array<GpsPoint> */
 	private array $coordinates;
 
