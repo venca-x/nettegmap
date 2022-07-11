@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Nette\Forms;
@@ -14,7 +15,6 @@ use Nette\Utils\Html;
  */
 class NetteGMapPicker extends BaseControl
 {
-
 	/**
 	 * Class for "Extends"
 	 * @var BaseNetteGMap

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -192,7 +193,7 @@ class BaseNetteGMap extends Nette\Application\UI\Control
 			//is %
 			return $number . '' . $unit;
 		} else {
-			throw new \Exception('Dimensions must be in number, px or %');
+			throw new Exception('Dimensions must be in number, px or %');
 		}
 	}
 }
