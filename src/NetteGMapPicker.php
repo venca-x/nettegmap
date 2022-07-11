@@ -86,7 +86,9 @@ class NetteGMapPicker extends BaseControl
 		$control->type = 'text';
 		$control->id = $name;
 		$control->name .= "[$name]";
-		//$control->value = $this->value[$name];
+		if ($this->value != null && array_key_exists($name, $this->value)) {
+			$control->value = $this->value[$name];
+		}
 
 		return $control;
 	}
