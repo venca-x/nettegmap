@@ -1,6 +1,7 @@
 Nettegmap
 ===============
-[![Tests](https://github.com/venca-x/nettegmap/workflows/Tests/badge.svg?branch=master)](https://github.com/venca-x/nettegmap/actions)
+[![Test](https://github.com/venca-x/nettegmap/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/venca-x/nettegmap/actions)
+[![Coding Style](https://github.com/venca-x/nettegmap/actions/workflows/coding-style.yml/badge.svg?branch=master)](https://github.com/venca-x/nettegmap/actions)
 [![Coverage Status](https://coveralls.io/repos/github/venca-x/nettegmap/badge.svg?branch=master)](https://coveralls.io/github/venca-x/nettegmap?branch=master)
 [![Total Downloads](https://poser.pugx.org/venca-x/nettegmap/downloads.svg)](https://packagist.org/packages/venca-x/nettegmap) 
 [![Latest Stable Version](https://poser.pugx.org/venca-x/nettegmap/v/stable.svg)](https://packagist.org/packages/venca-x/nettegmap) 
