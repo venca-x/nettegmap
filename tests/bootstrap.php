@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+use Tester\Environment;
 
 if (@!include __DIR__ . '/../vendor/autoload.php') {
 	echo 'Install Nette Tester using `composer install`';
@@ -8,7 +9,7 @@ if (@!include __DIR__ . '/../vendor/autoload.php') {
 }
 
 
-Tester\Environment::setup();
+Environment::setup();
 date_default_timezone_set('Europe/Prague');
 
 

@@ -22,7 +22,7 @@ class ExtensionTest extends Tester\TestCase
 	{
 		Nette\Forms\NetteGMapPicker::register();
 
-		$form = new Form;
+		$form = new Form();
 
 		$mapControl = $form->addGMap('position', 'Position:')
 			->setWidth('500')
@@ -37,7 +37,7 @@ class ExtensionTest extends Tester\TestCase
 	{
 		Nette\Forms\NetteGMapPicker::register();
 
-		$form = new Form;
+		$form = new Form();
 
 		$mapControl = $form->addGMap('position', 'Position:')
 			->setWidth('600')
@@ -55,5 +55,5 @@ class ExtensionTest extends Tester\TestCase
 	}
 }
 
-$test = new ExtensionTest;
+$test = new ExtensionTest();
 $test->run();

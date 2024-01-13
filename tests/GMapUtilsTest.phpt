@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 use Tester\Assert;
+use Tester\TestCase;
 
 $container = require __DIR__ . '/bootstrap.php';
 
-class GMapUtilsTest extends Tester\TestCase
+class GMapUtilsTest extends TestCase
 {
 	public function setUp()
 	{
@@ -21,5 +22,5 @@ class GMapUtilsTest extends Tester\TestCase
 }
 
 
-$test = new GMapUtilsTest;
+$test = new GMapUtilsTest();
 $test->run();

@@ -3,10 +3,11 @@
 declare(strict_types=1);
 
 use Tester\Assert;
+use Tester\TestCase;
 
 $container = require __DIR__ . '/bootstrap.php';
 
-class MarkerTest extends Tester\TestCase
+class MarkerTest extends TestCase
 {
 	public function setUp()
 	{
@@ -21,5 +22,5 @@ class MarkerTest extends Tester\TestCase
 }
 
 
-$test = new MarkerTest;
+$test = new MarkerTest();
 $test->run();

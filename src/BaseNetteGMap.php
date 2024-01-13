@@ -1,12 +1,13 @@
 <?php
 
 declare(strict_types=1);
+use Nette\Application\UI\Control;
 
 /**
  * Class AbstractNetteGMap
  * Base abstract map class for propertis in map
  */
-class BaseNetteGMap extends Nette\Application\UI\Control
+class BaseNetteGMap extends Control
 {
 	/** @var mixed */
 	private $child;

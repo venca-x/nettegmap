@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+use Nette\SmartObject;
 
 /**
  * Class Point
@@ -8,7 +9,7 @@ declare(strict_types=1);
  */
 class GpsPoint
 {
-	use Nette\SmartObject;
+	use SmartObject;
 
 	/** @var float */
 	public $latitude;

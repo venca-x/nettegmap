@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 use Tester\Assert;
+use Tester\TestCase;
 
 $container = require __DIR__ . '/bootstrap.php';
 
 require __DIR__ . '/../src/GpsPoint.php';
 
-class GpsPointTest extends Tester\TestCase
+class GpsPointTest extends TestCase
 {
 	public function setUp()
 	{
@@ -37,5 +38,5 @@ class GpsPointTest extends Tester\TestCase
 	}
 }
 
-$test = new GpsPointTest;
+$test = new GpsPointTest();
 $test->run();

@@ -1,10 +1,11 @@
 <?php
 
 declare(strict_types=1);
+use Nette\SmartObject;
 
 class GMapUtils
 {
-	use Nette\SmartObject;
+	use SmartObject;
 
 	/**
 	 * Get coordinates from address

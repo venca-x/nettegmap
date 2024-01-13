@@ -1,10 +1,11 @@
 <?php
 
 declare(strict_types=1);
+use Nette\SmartObject;
 
 class Marker
 {
-	use Nette\SmartObject;
+	use SmartObject;
 
 	/** @var string */
 	protected string $title;

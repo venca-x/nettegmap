@@ -11,7 +11,6 @@ use Nette\Utils\Html;
 /**
  * Form control for set coordinates on map
  * Class NetteGMapPicker
- * @package Nette\Forms
  */
 class NetteGMapPicker extends BaseControl
 {

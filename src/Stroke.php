@@ -10,14 +10,6 @@ class Stroke
 
 
 	/**
-	 * Stroke constructor.
-	 */
-	public function __construct()
-	{
-	}
-
-
-	/**
 	 * @return array<string, mixed>
 	 */
 	public function getArray(): array
