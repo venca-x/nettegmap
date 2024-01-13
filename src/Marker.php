@@ -32,7 +32,7 @@ class Marker
 		string $description,
 		$latitude,
 		$longitude,
-		?string $icon = null
+		?string $icon = null,
 	) {
 		$this->setTitle($title);
 		$this->setDescription($description);
