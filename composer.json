@@ -17,7 +17,7 @@
     "nette/forms": "^3.0"
   },
   "require-dev": {
-    "nette/tester": "^2.4"
+    "nette/tester": "^2.5"
   },
   "conflict": {
     "nette/forms": "<3.0",
