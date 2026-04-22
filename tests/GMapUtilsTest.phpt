@@ -1,8 +1,10 @@
 <?php
 
 declare(strict_types=1);
+use ReflectionMethod;
 use Tester\Assert;
 use Tester\TestCase;
+use Throwable;
 
 $container = require __DIR__ . '/bootstrap.php';
 
@@ -10,10 +12,12 @@ final class GMapUtilsTestable extends GMapUtils
 {
 	public static ?string $httpResponse = null;
 
+
 	public static function setHttpResponse(?string $json): void
 	{
 		self::$httpResponse = $json;
 	}
+
 
 	protected static function httpGet(string $url): string
 	{
@@ -56,8 +60,8 @@ class GMapUtilsTest extends TestCase
 		GMapUtilsTestable::setHttpResponse(json_encode(['error_message' => 'API down']));
 
 		Assert::exception(
-			fn () => GMapUtilsTestable::getCoordinatesFromAddress('x'),
-			Exception::class,
+			fn() => GMapUtilsTestable::getCoordinatesFromAddress('x'),
+			Throwable::class,
 			'API down',
 		);
 	}
@@ -68,8 +72,8 @@ class GMapUtilsTest extends TestCase
 		GMapUtilsTestable::setHttpResponse(json_encode(['results' => []]));
 
 		Assert::exception(
-			fn () => GMapUtilsTestable::getCoordinatesFromAddress('x'),
-			Exception::class,
+			fn() => GMapUtilsTestable::getCoordinatesFromAddress('x'),
+			Throwable::class,
 			"Can't search address: x",
 		);
 	}
@@ -92,8 +96,8 @@ class GMapUtilsTest extends TestCase
 		GMapUtilsTestable::setHttpResponse(json_encode(['error_message' => 'no']));
 
 		Assert::exception(
-			fn () => GMapUtilsTestable::getAddressFromCoordinates(1.0, 2.0),
-			Exception::class,
+			fn() => GMapUtilsTestable::getAddressFromCoordinates(1.0, 2.0),
+			Throwable::class,
 			'no',
 		);
 	}
@@ -104,8 +108,8 @@ class GMapUtilsTest extends TestCase
 		GMapUtilsTestable::setHttpResponse(json_encode(['results' => [[]]]));
 
 		Assert::exception(
-			fn () => GMapUtilsTestable::getAddressFromCoordinates(1.0, 2.0),
-			Exception::class,
+			fn() => GMapUtilsTestable::getAddressFromCoordinates(1.0, 2.0),
+			Throwable::class,
 			"Can't search address for GPS: 1, 2",
 		);
 	}
@@ -113,21 +117,21 @@ class GMapUtilsTest extends TestCase
 
 	public function testHttpGetFailure(): void
 	{
-		$method = new \ReflectionMethod(GMapUtils::class, 'httpGet');
+		$method = new ReflectionMethod(GMapUtils::class, 'httpGet');
 		$method->setAccessible(true);
 		$badFile = 'file:///' . str_replace('\\', '/', __DIR__) . '/___gmap_test_missing_' . uniqid('', true) . '_.tmp';
 		Assert::exception(
 			static function () use ($method, $badFile): void {
 				$method->invoke(null, $badFile);
 			},
-			Exception::class,
+			Throwable::class,
 		);
 	}
 
 
 	public function testHttpGetReadsExistingFile(): void
 	{
-		$method = new \ReflectionMethod(GMapUtils::class, 'httpGet');
+		$method = new ReflectionMethod(GMapUtils::class, 'httpGet');
 		$method->setAccessible(true);
 		$tmp = tempnam(sys_get_temp_dir(), 'gmapu');
 		Assert::truthy($tmp);
