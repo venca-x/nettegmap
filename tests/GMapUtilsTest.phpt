@@ -1,10 +1,8 @@
 <?php
 
 declare(strict_types=1);
-use ReflectionMethod;
 use Tester\Assert;
 use Tester\TestCase;
-use Throwable;
 
 $container = require __DIR__ . '/bootstrap.php';
 

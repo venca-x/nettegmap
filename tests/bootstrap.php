@@ -39,8 +39,7 @@ function test(string $title, Closure $function): void
  */
 function gmapTestTemplateFactory(): Nette\Bridges\ApplicationLatte\TemplateFactory
 {
-	$latteFactory = new class implements Nette\Bridges\ApplicationLatte\LatteFactory
-	{
+	$latteFactory = new class() implements Nette\Bridges\ApplicationLatte\LatteFactory {
 		public function create(): Latte\Engine
 		{
 			return new Latte\Engine;
