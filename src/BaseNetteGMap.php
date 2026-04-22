@@ -34,7 +34,7 @@ class BaseNetteGMap extends Control
 	 * Google Cloud Map ID for Advanced Markers (optional; client falls back to DEMO_MAP_ID if unset).
 	 * @var string|null
 	 */
-	private $mapId = null;
+	private $mapId;
 
 	/** @var array<int, mixed> */
 	private $markers = [];

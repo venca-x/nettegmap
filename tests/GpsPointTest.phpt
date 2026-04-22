@@ -38,5 +38,5 @@ class GpsPointTest extends TestCase
 	}
 }
 
-$test = new GpsPointTest();
+$test = new GpsPointTest;
 $test->run();

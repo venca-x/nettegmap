@@ -22,5 +22,5 @@ class MarkerTest extends TestCase
 }
 
 
-$test = new MarkerTest();
+$test = new MarkerTest;
 $test->run();
