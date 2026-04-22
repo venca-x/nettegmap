@@ -16,17 +16,32 @@ Nette addon. Viewer and picker for Google maps
 | Version     | PHP&nbsp;&nbsp;&nbsp;&nbsp; | Recommended&nbsp;Nette        |
 | ---         | ---                         | ---                           |
 | dev-master  | \>= 8.0                     | Nette 3.0 (Nette\SmartObject) |
+| 1.4.x       | \>= 8.0                     | Nette 3.0 (current; Maps JS v3.56+ Advanced Markers) |
 | 1.3.x       | \>= 8.0                     | Nette 3.0 (Nette\SmartObject) |
 | 1.2.x       | \>= 7.1                     | Nette 2.4 (Nette\SmartObject) |
 | 1.1.x       | \>= 5.3.7                   | Nette 2.4, 2.3 (Nette\Object) |
 | 1.0.x       | \>= 5.3.7                   | Nette 2.4, 2.3 (Nette\Object) |
+
+### Version 1.4.0 (Maps JavaScript API 2023–2024+)
+
+- **Asynchronous API load**: the recommended pattern uses `async` on the script tag, query parameters `loading=async` and `callback=netteGMapGoogleApiReady`, and the `marker` library alongside `places` (`libraries=places,marker`). The global function `window.netteGMapGoogleApiReady` is defined in `jquery.netteGMap.js` and must be loaded **before** the Google Maps script so the callback exists when the API finishes loading.
+- **Advanced markers**: legacy `google.maps.Marker` is replaced by `google.maps.marker.AdvancedMarkerElement` (deprecation notice from February 2024). Map options include **`mapId`**; if you do not set a Map ID in PHP, the client uses Google’s `DEMO_MAP_ID` (suitable for development; for production, create a Map ID in [Google Cloud Console](https://console.cloud.google.com/) and set it with `setMapId()` on the control).
+- **Info windows** use `infowindow.open({ map, anchor })` for advanced markers. **Custom marker icons** use the `content` option with an `<img>` node.
+- **Geocoding** requests use the `location` field instead of the deprecated `latLng` key.
+- **Bugfix**: the viewer with a fixed center no longer referenced an out-of-scope `mapProp` variable; `map.setCenter()` is used instead.
+- **Draggable picker**: `dragend` is bound once on the picker marker; repeated updates no longer stack duplicate listeners.
+
+Při aktualizaci z 1.3.x je nutné upravit načtení skriptu v šabloně (viz Configuration) a zkontrolovat pořadí: jQuery → `jquery.netteGMap.js` → asynchronní tag Maps API s `callback=netteGMapGoogleApiReady`.
 
 Installation
 ------------
 
 Install with composer:
 ```
-composer require venca-x/nettegmap:dev-master
+composer require venca-x/nettegmap:^1.4
+```
+(Or `dev-master` for the latest commit.)
+
 ```
 You need use jQuery.
 
@@ -47,20 +62,23 @@ extensions:
 
 ```html
 <link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/netteGMap.css">
-  
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=YOUR_API_KEY" type="text/javascript"></script>
-<script type="text/javascript" src="{$basePath}/js/jquery.netteGMap.js"></script>
-<script type="text/javascript" src="{$basePath}/js/main.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- Defines window.netteGMapGoogleApiReady; must run before the Maps API script. -->
+<script src="{$basePath}/js/jquery.netteGMap.js"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&amp;libraries=places,marker&amp;loading=async&amp;callback=netteGMapGoogleApiReady"></script>
+<script src="{$basePath}/js/main.js"></script>
 ```
-You must generate **YOUR_API_KEY** in [https://console.developers.google.com/?hl=cs](https://console.developers.google.com/?hl=cs) (Credentials -> API key)
 
-Enable **Maps JavaScript API** in [https://console.developers.google.com/?hl=cs](https://console.developers.google.com/?hl=cs) 
+- Generate **YOUR_API_KEY** in [Google Cloud Console](https://console.cloud.google.com/) (APIs & Services → Credentials).
+- Enable **Maps JavaScript API** and, for the picker search box, a Places-compatible API (e.g. **Places API** / Places API (New) as required by your project).
+- The URL must include `libraries=places,marker` (marker library is required for advanced markers), `loading=async`, and `callback=netteGMapGoogleApiReady` (must match the function name in `jquery.netteGMap.js`).
 
-For search by address in maps enable **Places API for Web** in [https://console.developers.google.com/?hl=cs](https://console.developers.google.com/?hl=cs) 
+**Volitelné — vlastní Map ID (doporučeno pro produkci):** v [Cloud Console](https://console.cloud.google.com/) vytvořte Map ID a v presenteru / komponentě zavolejte např. `$viewer->setMapId('VÁŠ_MAP_ID');` (metoda je na společné bázi `BaseNetteGMap`). Bez nastavení zůstává fallback `DEMO_MAP_ID` v prohlížeči.
 
-Usage with Bower
+Usage with Bower / bundler
 -------------
+Load the Google Maps script **after** the bundle that includes `jquery.netteGMap.js`, with `callback=netteGMapGoogleApiReady` and `libraries=places,marker` (see Configuration). Example Grunt/Gulp order:
 ```js
 concat: {
     js: {
@@ -97,6 +115,7 @@ protected function createComponentNetteGMapSimpleViewer() {
     //$netteGMapViewer->setCenterMap(new \GpsPoint(49.1695254488,14.2521617334));
     //$netteGMapViewer->setScrollWheel(true);
     //$netteGMapViewer->setZoom(12);
+    //$netteGMapViewer->setMapId('YOUR_GOOGLE_MAP_ID'); // volitelné, viz verze 1.4
     $netteGMapViewer = new \NetteGMapViewer($markers);
           
     return $netteGMapViewer;
@@ -269,6 +288,6 @@ $( function() {
             //alert('changePositionMarker');
         }
     
-    } );	
+    } );
 } );
 ```

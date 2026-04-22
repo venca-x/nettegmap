@@ -1,6 +1,6 @@
-$(document).ready(function () {
-
-    ( function ($) {
+// Global callback for Google Maps JS (async + loading=async). Load API with: callback=netteGMapGoogleApiReady
+window.netteGMapGoogleApiReady = function () {
+    jQuery(function ($) {
 
         var map;
         var markers = []; //array of markers
@@ -10,7 +10,12 @@ $(document).ready(function () {
 
             infowindow = new google.maps.InfoWindow();
 
+            var mapId = (dataMapAttr.map && typeof dataMapAttr.map.mapId !== 'undefined' && dataMapAttr.map.mapId)
+                ? dataMapAttr.map.mapId
+                : 'DEMO_MAP_ID';
+
             var mapProp = {
+                mapId: mapId,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 scrollwheel: dataMapAttr.map.scrollwheel,
             };
@@ -71,8 +76,7 @@ $(document).ready(function () {
                 }
 
                 if (typeof dataMapAttr.map.center !== 'undefined') {
-                    //is set center
-                    mapProp.center = new google.maps.LatLng(dataMapAttr.map.center.lng, dataMapAttr.map.center.lat);
+                    map.setCenter(new google.maps.LatLng(dataMapAttr.map.center.lng, dataMapAttr.map.center.lat));
                 } else {
                     //set zoom and center auto - bounds
                     map.fitBounds(bounds);
@@ -171,9 +175,13 @@ $(document).ready(function () {
         }
 
 
+        var pickerOptions = (typeof window.netteGMapPickerOptions === 'object' && window.netteGMapPickerOptions !== null)
+            ? window.netteGMapPickerOptions
+            : {};
+
         $("div.nettegmap-viewer").netteGMapViewer();
         $("div.nettegmap-layer").netteGMapLayer();
-        $("div.nettegmap-picker").netteGMapPicker();
+        $("div.nettegmap-picker").netteGMapPicker(pickerOptions);
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -186,19 +194,23 @@ $(document).ready(function () {
 
             var location = new google.maps.LatLng(marker.latitude, marker.longitude);
 
-            //create marker
-            var markerPoint = new google.maps.Marker({
+            var markerOptions = {
                 position: location,
                 map: map,
-                title: marker.title
-            });
+                title: typeof marker.title !== 'undefined' ? String(marker.title) : '',
+                gmpClickable: true
+            };
 
-            //set icon whenn is set
             if (typeof marker.icon !== 'undefined') {
-                markerPoint.setIcon(marker.icon);
+                var iconImg = document.createElement('img');
+                iconImg.src = marker.icon;
+                iconImg.style.maxHeight = '40px';
+                markerOptions.content = iconImg;
             }
 
-            google.maps.event.addListener(markerPoint, 'click', (function (markerPoint, i) {
+            var markerPoint = new google.maps.marker.AdvancedMarkerElement(markerOptions);
+
+            markerPoint.addListener('click', (function (markerPoint, i) {
                 return function () {
                     var content = "";
                     if (marker.title != "") {
@@ -206,13 +218,12 @@ $(document).ready(function () {
                     }
                     content = content + "" + marker.description;
                     infowindow.setContent(content);
-                    infowindow.open(map, markerPoint);
+                    infowindow.open({map: map, anchor: markerPoint});
                 };
             })(markerPoint, i));
 
             bounds.extend(location);
 
-            //add marker to array
             markers.push(markerPoint);
 
         }
@@ -222,14 +233,31 @@ $(document).ready(function () {
          * @param location
          */
         function setMarkerPicker(location) {
-            var markerPoint = new google.maps.Marker({
+            var markerPoint = new google.maps.marker.AdvancedMarkerElement({
                 position: location,
                 map: map,
-                draggable: true
+                gmpDraggable: true
             });
 
             map.setCenter(location);
             markers.push(markerPoint);
+
+            google.maps.event.addListener(markerPoint, 'dragend', function () {
+                var pos = markerPoint.position;
+                if (!pos) {
+                    return;
+                }
+                var lat = typeof pos.lat === 'function' ? pos.lat() : pos.lat;
+                var lng = typeof pos.lng === 'function' ? pos.lng() : pos.lng;
+                $("input#latitude").val(Number(lat).toFixed(10));
+                $("input#longitude").val(Number(lng).toFixed(10));
+                getGeocodeData(
+                    new google.maps.LatLng(
+                        typeof pos.lat === 'function' ? pos.lat() : pos.lat,
+                        typeof pos.lng === 'function' ? pos.lng() : pos.lng
+                    )
+                );
+            });
 
             changeMarkerPickerLocation(location);
         }
@@ -239,29 +267,23 @@ $(document).ready(function () {
          * @param location
          */
         function changeMarkerPickerLocation(location) {
-            markers[0].setPosition(location);
+            markers[0].position = location;
             map.setCenter(location);
 
-            //set position marker to inputs
-            $("input#latitude").val(markers[0].position.lat());
-            $("input#longitude").val(markers[0].position.lng());
-
-
-            google.maps.event.addListener(markers[0], 'dragend', function (point) {
-
-                $("input#latitude").val(point.latLng.lat().toFixed(10));
-                $("input#longitude").val(point.latLng.lng().toFixed(10));
-
-                //getGeocodeData( new google.maps.LatLng( markers[0].position.lat(), markers[0].position.lng() ) );
-                getGeocodeData(new google.maps.LatLng(point.latLng.lat(), point.latLng.lng()));
-            });
+            var pos = markers[0].position;
+            if (pos) {
+                var lat = typeof pos.lat === 'function' ? pos.lat() : pos.lat;
+                var lng = typeof pos.lng === 'function' ? pos.lng() : pos.lng;
+                $("input#latitude").val(lat);
+                $("input#longitude").val(lng);
+            }
         }
 
         function getGeocodeData(latLng) {
             var geocoder = new google.maps.Geocoder();
-            geocoder.geocode({'latLng': latLng}, function (results, status) {
+            geocoder.geocode({location: latLng}, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
-                    defaults.changePositionMarker(results);//call function to result data geocode
+                    defaults.changePositionMarker(results);
                 }
             });
         }
@@ -332,6 +354,6 @@ $(document).ready(function () {
 
         // map layer - mapoverlay <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-    }(jQuery) );
+    });
 
-});
+};

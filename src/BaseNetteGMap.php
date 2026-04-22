@@ -30,6 +30,12 @@ class BaseNetteGMap extends Control
 	/** @var bool Zoom map with scroll wheal in mouse */
 	private $scrollwheel = false;
 
+	/**
+	 * Google Cloud Map ID for Advanced Markers (optional; client falls back to DEMO_MAP_ID if unset).
+	 * @var string|null
+	 */
+	private $mapId = null;
+
 	/** @var array<int, mixed> */
 	private $markers = [];
 
@@ -66,6 +72,10 @@ class BaseNetteGMap extends Control
 			],
 			'scrollwheel' => $this->scrollwheel,
 		];
+
+		if ($this->mapId !== null) {
+			$array['map']['mapId'] = $this->mapId;
+		}
 
 		if ($this->centerMapGpsPoint != null) {
 			$array['map']['center'] = [
@@ -168,6 +178,17 @@ class BaseNetteGMap extends Control
 	public function setScrollWheel(bool $scrollWheel)
 	{
 		$this->scrollwheel = $scrollWheel;
+		return $this->child;
+	}
+
+
+	/**
+	 * Set Google Cloud Map ID (recommended for production Advanced Markers). See README.
+	 * @return mixed
+	 */
+	public function setMapId(string $mapId)
+	{
+		$this->mapId = $mapId;
 		return $this->child;
 	}
 
