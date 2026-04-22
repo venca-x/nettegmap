@@ -36,6 +36,12 @@ class BaseNetteGMap extends Control
 	 */
 	private $mapId;
 
+	/**
+	 * Use Advanced Markers API in the client (together with mapId in production).
+	 * @var bool
+	 */
+	private $advancedMarkers = false;
+
 	/** @var array<int, mixed> */
 	private $markers = [];
 
@@ -71,6 +77,7 @@ class BaseNetteGMap extends Control
 				'y' => $this->sizeY,
 			],
 			'scrollwheel' => $this->scrollwheel,
+			'advancedMarkers' => $this->advancedMarkers,
 		];
 
 		if ($this->mapId !== null) {
@@ -189,6 +196,16 @@ class BaseNetteGMap extends Control
 	public function setMapId(string $mapId)
 	{
 		$this->mapId = $mapId;
+		return $this->child;
+	}
+
+
+	/**
+	 * @return mixed
+	 */
+	public function setAdvancedMarkers(bool $on)
+	{
+		$this->advancedMarkers = $on;
 		return $this->child;
 	}
 

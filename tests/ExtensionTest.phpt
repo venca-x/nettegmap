@@ -29,7 +29,7 @@ class ExtensionTest extends Tester\TestCase
 			->setHeight('500');
 
 		Assert::type(Nette\Forms\NetteGMapPicker::class, $mapControl);
-		Assert::same('<div id="nettegmap" class="nettegmap-picker" data-map-attr=\'{"map":{"size":{"x":"500px","y":"500px"},"scrollwheel":false,"zoom":12}}\'><input type="text" name="position" id="nettegmap-search-box" placeholder="Vyhledávání"><div class="nettegmap-canvas"></div><input type="text" name="position[latitude]" id="latitude"><input type="text" name="position[longitude]" id="longitude"></div>', (string) $mapControl->getControl());
+		Assert::same('<div id="nettegmap" class="nettegmap-picker" data-map-attr=\'{"map":{"size":{"x":"500px","y":"500px"},"scrollwheel":false,"advancedMarkers":false,"zoom":12}}\'><input type="text" name="position" id="nettegmap-search-box" placeholder="Vyhledávání"><div class="nettegmap-canvas"></div><input type="text" name="position[latitude]" id="latitude"><input type="text" name="position[longitude]" id="longitude"></div>', (string) $mapControl->getControl());
 	}
 
 
@@ -51,7 +51,7 @@ class ExtensionTest extends Tester\TestCase
 		$form->setDefaults($defaultValues);
 
 		Assert::type(Nette\Forms\NetteGMapPicker::class, $mapControl);
-		Assert::same('<div id="nettegmap" class="nettegmap-picker" data-map-attr=\'{"map":{"size":{"x":"600px","y":"600px"},"scrollwheel":false,"zoom":12}}\'><input type="text" name="position" id="nettegmap-search-box" placeholder="Vyhledávání"><div class="nettegmap-canvas"></div><input type="text" name="position[latitude]" id="latitude" value="49.1695254488"><input type="text" name="position[longitude]" id="longitude" value="14.2521617334"></div>', (string) $mapControl->getControl());
+		Assert::same('<div id="nettegmap" class="nettegmap-picker" data-map-attr=\'{"map":{"size":{"x":"600px","y":"600px"},"scrollwheel":false,"advancedMarkers":false,"zoom":12}}\'><input type="text" name="position" id="nettegmap-search-box" placeholder="Vyhledávání"><div class="nettegmap-canvas"></div><input type="text" name="position[latitude]" id="latitude" value="49.1695254488"><input type="text" name="position[longitude]" id="longitude" value="14.2521617334"></div>', (string) $mapControl->getControl());
 	}
 }
 
