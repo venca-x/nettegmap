@@ -18,7 +18,8 @@
   },
   "require-dev": {
     "nette/tester": "^2.5",
-    "phpstan/phpstan": "^2.0"
+    "phpstan/phpstan": "^2.0",
+    "latte/latte": "^3.0.18"
   },
   "scripts": {
     "phpstan": "phpstan analyse --memory-limit=512M"

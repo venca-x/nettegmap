@@ -18,7 +18,7 @@ class GMapUtils
 		$address = urlencode($address);
 		$url = 'http://maps.google.com/maps/api/geocode/json?sensor=false&address=' . $address;
 		//$url = "http://maps.googleapis.com/maps/api/geocode/xml?address=prague";
-		$response = file_get_contents($url);
+		$response = static::httpGet($url);
 		$json = json_decode($response, true);
 
 		if (isset($json['error_message'])) {
@@ -46,7 +46,7 @@ class GMapUtils
 		$lng = urlencode($lng . '');
 		$url = "http://maps.googleapis.com/maps/api/geocode/json?latlng={$lat},{$lng}&sensor=true";
 
-		$response = file_get_contents($url);
+		$response = static::httpGet($url);
 		$json = json_decode($response, true);
 
 		if (isset($json['error_message'])) {
@@ -56,5 +56,20 @@ class GMapUtils
 		}
 
 		return $json['results'][0]['formatted_address'];
+	}
+
+
+	/**
+	 * Overridable for tests; uses {@see file_get_contents} by default.
+	 * @throws Exception
+	 */
+	protected static function httpGet(string $url): string
+	{
+		$response = @file_get_contents($url);
+		if ($response === false) {
+			throw new Exception('HTTP request failed: ' . $url);
+		}
+
+		return $response;
 	}
 }

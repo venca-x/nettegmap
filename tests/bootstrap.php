@@ -32,3 +32,20 @@ function test(string $title, Closure $function): void
 	before();
 	$function();
 }
+
+
+/**
+ * For tests that render map controls (NetteGMapViewer, NetteGMapLayer).
+ */
+function gmapTestTemplateFactory(): Nette\Bridges\ApplicationLatte\TemplateFactory
+{
+	$latteFactory = new class implements Nette\Bridges\ApplicationLatte\LatteFactory
+	{
+		public function create(): Latte\Engine
+		{
+			return new Latte\Engine;
+		}
+	};
+
+	return new Nette\Bridges\ApplicationLatte\TemplateFactory($latteFactory);
+}
