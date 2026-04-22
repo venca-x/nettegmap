@@ -59,7 +59,7 @@ class BaseNetteGMap extends Control
 
 
 	/**
-	 * @return array<string, mixed>.
+	 * @return array<string, mixed>
 	 */
 	public function getMapParams(): array
 	{
@@ -203,9 +203,9 @@ class BaseNetteGMap extends Control
 		preg_match('/(\d+)(px|%)?/i', $dimension, $matches);
 
 		$number = $matches[1];
-		$unit = @$matches[2];
+		$unit = $matches[2] ?? '';
 
-		if ($unit == '') {
+		if ($unit === '') {
 			//integer, add px
 			return $number . 'px';
 		} elseif ($unit == 'px') {
